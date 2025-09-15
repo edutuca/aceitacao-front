@@ -1,0 +1,22 @@
+<div class="layout-topbar">
+    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+        <i class="pi pi-bars"></i>
+    </button>
+    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
+        <i class="pi pi-ellipsis-v"></i>
+    </button>  
+
+    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <button class="p-link layout-topbar-button" (click)="profile.toggle($event)" >
+            <i class="pi pi-user"></i>
+            <span>Profile</span>
+        </button>
+    </div>
+</div>
+<p-overlayPanel #profile>
+    <ng-template pTemplate="content">
+        <div>Emissor: Eduardo de Oliveira Ootuca</div>
+        <div>Peril: Emissor</div>
+        <div>Area: Corporate/PJ</div>
+    </ng-template>
+</p-overlayPanel>
