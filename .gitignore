@@ -17,9 +17,12 @@
 /bazel-out
 
 # dependencies
-
+.angular/
+node_modules/
 /node_modules
 /.angular
+/.history
+/.angular/*
 
 # profiling files
 
