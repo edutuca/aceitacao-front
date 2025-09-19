@@ -1,0 +1,44 @@
+{
+	"data": [
+		{
+			"tipo": "IMP",
+			"qtd": 99,
+            "existeDetalhe": true
+		},
+		{
+			"tipo": "PAN",
+			"qtd": 99,
+            "existeDetalhe": true
+		},
+		{
+			"tipo": "DIV",
+			"qtd": 99,
+            "existeDetalhe": true
+		},
+		{
+			"tipo": "VIS",
+			"qtd": 99,
+            "existeDetalhe": true
+		},
+		{
+			"tipo": "AJU",
+			"qtd": 99,
+            "existeDetalhe": true
+		},
+		{
+			"tipo": "BON",
+			"qtd": 99,
+            "existeDetalhe": false
+		},
+		{
+			"tipo": "CRI",
+			"qtd": 99,
+            "existeDetalhe": false
+		},
+		{
+			"tipo": "REE",
+			"qtd": 99,
+            "existeDetalhe": false
+		}                                                             
+	]
+}

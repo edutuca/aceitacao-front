@@ -1,0 +1,16 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Product } from '../api/product';
+import { Observable } from 'rxjs';
+import { Restricao } from '../api/restricao';
+
+@Injectable()
+export class RestricoesService {
+
+    constructor(private http: HttpClient) { }
+
+    getRestricoes():Observable<Restricao[]> {
+        return this.http.get<Restricao[]>('assets/demo/data/restricoes.json');
+    }
+
+}

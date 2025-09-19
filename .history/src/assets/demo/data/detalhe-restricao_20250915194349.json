@@ -1,0 +1,44 @@
+{
+	"data": [
+		{
+			"tipo": "IMP",
+			"qtd": 99,
+            "total": 999
+		},
+		{
+			"tipo": "PAN",
+			"qtd": 99,
+            "total": 999
+		},
+		{
+			"tipo": "DIV",
+			"qtd": 99,
+            "total": 999
+		},
+		{
+			"tipo": "VIS",
+			"qtd": 99,
+            "total": 999
+		},
+		{
+			"tipo": "AJU",
+			"qtd": 99,
+            "total": 999
+		},
+		{
+			"tipo": "BON",
+			"qtd": 99,
+            "total": 999
+		},
+		{
+			"tipo": "CRI",
+			"qtd": 99,
+            "total": 999
+		},
+		{
+			"tipo": "REE",
+			"qtd": 99,
+            "total": 999
+		}                                                             
+	]
+}

@@ -1,0 +1,64 @@
+{
+	"IMP": [
+		{
+			"tipo": "SQL",
+			"qtd": 99
+		},
+		{
+			"tipo": "RT1",
+			"qtd": 99
+		},
+		{
+			"tipo": "RT2",
+			"qtd": 99
+		}
+	],
+	"PAN": [
+		{
+			"tipo": "Link Cartão",
+			"qtd": 99
+		},
+		{
+			"tipo": "Pagto",
+			"qtd": 99
+		}
+	],
+	"DIV": [
+		{
+			"tipo": "4611",
+			"qtd": 99
+		},
+		{
+			"tipo": "813",
+			"qtd": 99
+		}
+	],
+	"VIS": [
+		{
+			"tipo": "Pendente",
+			"qtd": 99
+		},
+		{
+			"tipo": "Insp. S/Abrib",
+			"qtd": 99
+		},
+		{
+			"tipo": "Dif. Contato",
+			"qtd": 99
+		}
+	],
+	"AJU": [
+		{
+			"tipo": "65",
+			"qtd": 99
+		},
+		{
+			"tipo": "95",
+			"qtd": 99
+		},
+		{
+			"tipo": "195",
+			"qtd": 99
+		}
+	]
+}
