@@ -12,6 +12,7 @@ import { DashboardsRoutingModule } from './dashboard-routing.module';
 import { MessagesModule } from 'primeng/messages';
 import { DividerModule } from 'primeng/divider';
 import { DialogModule } from 'primeng/dialog';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import { DialogModule } from 'primeng/dialog';
         DashboardsRoutingModule,
         MessagesModule,
         DividerModule,
-        DialogModule
+        DialogModule,
+        CalendarModule
     ],
     declarations: [DashboardComponent]
 })

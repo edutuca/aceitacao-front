@@ -1,0 +1,49 @@
+{
+	"data": [
+		{
+			"familia": "LINHAS FINANCEIRAS",
+			"qtd": 99
+		},
+		{
+			"familia": "RC-GERAL",
+			"qtd": 99
+		},
+		{
+			"familia": "AGRO-SAFRA",
+			"qtd": 99
+		},
+		{
+			"familia": "VIDA SCT",
+			"qtd": 99
+		},
+		{
+			"familia": "RISCOS-NOMEADOS",
+			"qtd": 99
+		},
+		{
+			"familia": "EMPRESARIAL-CORPORATE",
+			"qtd": 99
+		},
+		{
+			"familia": "EQUIPAMENTOS RD/AGRO",
+			"qtd": 99
+		},
+		{
+			"familia": "ENGENHARIA",
+			"qtd": 99
+		},
+		{
+			"familia": "PLATAFORMA",
+			"qtd": 99
+		},
+		{
+			"familia": "ENERGY",
+			"qtd": 99
+		},
+		{
+			"familia": "TRANSPORTES",
+			"qtd": 99
+		}
+	]
+}
+  

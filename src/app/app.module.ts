@@ -1,15 +1,16 @@
-import { NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { AppComponent } from './app.component';
+import { NgModule } from '@angular/core';
+import { NotfoundComponent } from './aceitacao-front/components/notfound/notfound.component';
+import { PropostaStatusService } from './aceitacao-front/service/proposta.status.service';
+import { PropostaXPrazoService } from './aceitacao-front/service/proposta.x.prazo.service';
+import { RestricoesService } from './aceitacao-front/service/restricao.service';
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { AppLayoutModule } from './layout/app.layout.module';
-import { NotfoundComponent } from './demo/components/notfound/notfound.component';
-import { CountryService } from './demo/service/country.service';
-import { CustomerService } from './demo/service/customer.service';
-import { EventService } from './demo/service/event.service';
-import { IconService } from './demo/service/icon.service';
-import { NodeService } from './demo/service/node.service';
-import { RestricoesService } from './demo/service/restricao.service';
+import { EmissorService } from './aceitacao-front/service/emissor.service';
+import { LayoutService } from './layout/service/app.layout.service';
+import { MenuService } from './layout/app.menu.service';
+import { FamiliaService } from './aceitacao-front/service/familia.service';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,12 @@ import { RestricoesService } from './demo/service/restricao.service';
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
-        CountryService, CustomerService, EventService, IconService, NodeService, RestricoesService
+        RestricoesService, 
+        PropostaXPrazoService, 
+        PropostaStatusService, 
+        EmissorService, 
+        FamiliaService,
+        LayoutService, MenuService
     ],
     bootstrap: [AppComponent]
 })

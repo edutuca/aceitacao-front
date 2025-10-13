@@ -1,4 +1,27 @@
     <div class="grid">
+        <div class="col-12 lg:col-12 xl:col-12">            
+            <div class="card mb-0">
+              <div class="grid">
+                <div class="col-12 lg:col-12 xl:col-1 flex align-items-center justify-content-left px-7">
+                    <b>Periodo:</b>
+                </div>
+                <div class="col-12 lg:col-4 xl:col-2">
+                    <p-calendar [(ngModel)]="periodoInicio" dateFormat="dd/mm/yy"></p-calendar>
+                </div>
+                <div class="col-12 lg:col-4 xl:col-2">
+                    <p-calendar [(ngModel)]="periodoFim" dateFormat="dd/mm/yy"></p-calendar>
+                </div>
+               </div>       
+               <div><h3>Media Atendimento Individual (Em Dias)</h3></div>
+               <div class="grid">
+                    <div class="col-12 lg:col-12 xl:col-12">
+                       <div class="card mb-0">
+                         <p-chart type="line" [data]="chartData" [options]="chartOptions"></p-chart>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="col-12 lg:col-12 xl:col-12">
             <div class="card mb-0">
                 <div><h3>Chat - Pendências</h3></div>
@@ -200,7 +223,7 @@
             <div class="card">
                 <div><h5>Restrições Pendentes e/ou Ações necessárias</h5></div>
                 <div class="grid">
-                     <div class="col-12 lg:col-12 xl:col-3">
+                     <div class="col-12 lg:col-12 xl:col-4">
                         <div class="card mb-0">
                         <p-table [value]="restricoes" [paginator]="false" [rows]="9" responsiveLayout="scroll">
                             <ng-template pTemplate="header">
@@ -221,34 +244,52 @@
                         </p-table>
                         </div>
                     </div>
-                    <div class="col-12 lg:col-12 xl:col-3">
+                    <div class="col-12 lg:col-12 xl:col-4">
                             <div class="card">
-                                <p-table [value]="restricoes" [paginator]="false" [rows]="9" responsiveLayout="scroll">
+                                <p-table [value]="statusGrade" [paginator]="false" [rows]="9" responsiveLayout="scroll">
                                     <ng-template pTemplate="header">
                                         <tr>
                                             <th style="text-align: center;">Status Grade</th>
                                             <th style="text-align: center;">Qtde</th>
-                                            <th style="text-align: center;">Consultar</th>
+                                            <th style="text-align: center;">Detalhe</th>
                                         </tr>
                                     </ng-template>
-                                    <ng-template pTemplate="body" let-restricao>
+                                    <ng-template pTemplate="body" let-statusGrade>
                                         <tr>
-                                            <td style="width: 3%; min-width: 4rem; "><div style="display: flex; justify-content: center; align-items: center;">{{restricao.tipo}}</div></td>
-                                            <td style="width: 3%; min-width: 4rem;"><div style="display: flex; justify-content: center; align-items: center;">{{restricao.qtd}}</div></td>
-                                            <td style="width: 5%; min-width: 4rem;"><div style="display: flex; justify-content: center; align-items: center;"><p-button  [style]="{'width': '1.8rem', 'height': '1.8rem'}" icon="pi pi-filter" (click)="detalheRestricao(restricao)"></p-button></div></td>
-                                            
+                                            <td style="width: 3%; min-width: 4rem; "><div style="display: flex; justify-content: center; align-items: center;">{{statusGrade.status}}</div></td>
+                                            <td style="width: 3%; min-width: 4rem;"><div style="display: flex; justify-content: center; align-items: center;">{{statusGrade.qtd}}</div></td>
+                                            <td style="width: 5%; min-width: 4rem;"><div style="display: flex; justify-content: center; align-items: center;"><p-button  [style]="{'width': '1.8rem', 'height': '1.8rem'}" icon="pi pi-bars" (click)="detalheStatusGrade(statusGrade.status)"></p-button></div></td>
                                         </tr>
                                     </ng-template>
                                 </p-table>
                             </div>
                         </div>
-
+                        <div class="col-12 lg:col-12 xl:col-4">
+                        <div class="card mb-0">
+                        <p-table [value]="propostaXPrazos" [rows]="9" responsiveLayout="scroll">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th style="text-align: left;">Propostas X Prazo</th>
+                                    <th style="text-align: center;">Qtde</th>
+                                    <th style="text-align: center;">Consultar</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-propostaXPrazo>
+                                <tr>
+                                    <td style="width: 5%; min-width: 4rem; "><div style="display: flex; justify-content: left; align-items: left;">{{propostaXPrazo.descricao}}</div></td>
+                                    <td style="width: 5%; min-width: 4rem;"><div style="display: flex; justify-content: center; align-items: center;">{{propostaXPrazo.qtd}}</div></td>
+                                    <td style="width: 3%; min-width: 4rem;"><div style="display: flex; justify-content: center; align-items: center;" ><p-button  [style]="{'width': '1.8rem', 'height': '1.8rem'}" icon="pi pi-filter"></p-button></div></td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        </div>
+                    </div>
                 </div>
             </div>
     </div>
 
 
-<p-dialog header="Detalhe Restricao {{(restricao)?restricao.tipo:''}}" [(visible)]="visibleDetalheRestricao" [modal]="true" [style]="{ width: '30%' }" [draggable]="false" [resizable]="false">
+<p-dialog header="Detalhe Restricao {{(restricao)?restricao.tipo:''}}" [(visible)]="visibleDetalheRestricao" [modal]="true" [style]="{ width: '20%' }" [draggable]="false" [resizable]="false">
     <div class="grid">
       <div class="col-12 lg:col-12 xl:col-12">
             <div class="card">
@@ -270,5 +311,29 @@
                 </p-table>
             </div>
         </div>
-    </div>
+    </div>   
 </p-dialog>
+
+<p-dialog header="Detalhe Por Produtos" [(visible)]="visibleDetalheStatusGrade" [modal]="true" [style]="{ width: '20%' }" [draggable]="false" [resizable]="false">
+    <div class="grid">
+      <div class="col-12 lg:col-12 xl:col-12">
+            <div class="card">
+                <p-table [value]="detalhePropostaGrade" [paginator]="false" [rows]="9" responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th  style="text-align: left;">Produtos</th>
+                            <th  style="text-align: center;">Qtde</th>
+                            <th  style="text-align: center;">Consultar</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-detalheStatusGrade>
+                        <tr>
+                            <td><div style="display: flex; justify-content: left; align-items: left;">{{detalheStatusGrade.familia}}</div></td>
+                            <td><div style="display: flex; justify-content: center; align-items: center;">{{detalheStatusGrade.qtd}}</div></td>
+                            <td><div style="display: flex; justify-content: center; align-items: center;"><p-button  [style]="{'width': '1.8rem', 'height': '1.8rem'}" icon="pi pi-filter"></p-button></div></td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,17 @@
+{
+	"data": [
+		{
+			"descricao": "Até 3 dias",
+			"qtd": 99
+		},
+		{
+			"descricao": "De 4 a 10 em grade",
+			"qtd": 99
+		},
+		{
+			"descricao": "Mais de 11 dias",
+			"qtd": 99
+		}
+	]
+}
+  

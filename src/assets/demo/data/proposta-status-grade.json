@@ -1,0 +1,21 @@
+{
+	"data": [
+		{
+			"status": "GRD",
+			"qtd": 99
+		},
+		{
+			"status": "VSP",
+			"qtd": 99
+		},
+		{
+			"status": "OLI",
+			"qtd": 99
+		},
+		{
+			"status": "ACT",
+			"qtd": 99
+		}
+	]
+}
+  

@@ -1,0 +1,128 @@
+ <div class="grid">
+        <div class="col-12 lg:col-12 xl:col-12">
+            <div class="card mb-0">
+             <div class="grid">
+                <div class="col-12 lg:col-12 xl:col-1 flex align-items-center justify-content-left px-7">
+                    <b>Periodo:</b>
+                </div>
+                <div class="col-12 lg:col-4 xl:col-2">
+                    <p-calendar [(ngModel)]="periodoInicio" dateFormat="dd/mm/yy"></p-calendar>
+                </div>
+                <div class="col-12 lg:col-4 xl:col-2">
+                    <p-calendar [(ngModel)]="periodoFim" dateFormat="dd/mm/yy"></p-calendar>
+                </div>
+                <div class="col-12 lg:col-6 xl:col-1 flex align-items-center justify-content-left px-7">
+                    <b>Emissor:</b>
+                </div>
+                <div class="col-12 lg:col-12 xl:col-2">
+                    <p-multiSelect [options]="emissores" [(ngModel)]="emissoresSelecionados" defaultLabel="Selecione Emissor" optionLabel="nome">
+                        <ng-template let-value pTemplate="selectedItems">
+                            <ng-container *ngFor="let option of emissoresSelecionados">
+                            {{ option.matricula }};
+                            </ng-container>
+                            <div *ngIf="!emissoresSelecionados || emissoresSelecionados.length === 0">Selecione os Emissores</div>
+                        </ng-template>                            
+                        <ng-template let-emissor pTemplate="item">
+                            <div class="flex align-items-center gap-2">
+                            <div>{{ emissor.matricula }} - {{ emissor.nome }}</div>
+                            </div>
+                        </ng-template>                            
+                    </p-multiSelect>
+              </div>
+            </div>
+               <div><h3>Media Atendimento Individual (Em Dias)</h3></div>
+               <div class="grid">
+                    <div class="col-12 lg:col-12 xl:col-12">
+                       <div class="card mb-0">
+                         <p-chart type="line" [data]="chartData" [options]="chartOptions"></p-chart>
+                       </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+        <div class="col-12 lg:col-12 xl:col-12">
+            <div class="card mb-0">
+             <div class="grid">
+                    <div class="col-12 lg:col-12 xl:col-1 flex align-items-center justify-content-left px-7">
+                        <b>Periodo:</b>
+                    </div>
+                    <div class="col-12 lg:col-4 xl:col-2">
+                        <p-calendar [(ngModel)]="periodoInicio" dateFormat="dd/mm/yy"></p-calendar>
+                    </div>
+                    <div class="col-12 lg:col-4 xl:col-2">
+                        <p-calendar [(ngModel)]="periodoFim" dateFormat="dd/mm/yy"></p-calendar>
+                    </div>
+               </div>
+               <div><h3>Media Atendimento Por Produto (Em Dias)</h3></div>
+               <div class="grid">
+                    <div class="col-12 lg:col-12 xl:col-12">
+                       <div class="card mb-0">
+                            <p-chart type="bar" [data]="chartDataPorProduto" [options]="chartOptionsPorProduto"></p-chart>
+                       </div>
+                    </div>
+               </div>
+            </div>
+        </div> 
+        <div class="col-12 lg:col-12 xl:col-12">
+            <div class="card mb-0">
+             <div class="grid">
+                    <div class="col-12 lg:col-12 xl:col-1 flex align-items-center justify-content-left px-7">
+                        <b>Periodo:</b>
+                    </div>
+                    <div class="col-12 lg:col-4 xl:col-2 flex align-items-center justify-content-left">
+                        <p-calendar [(ngModel)]="periodoInicio" dateFormat="dd/mm/yy"></p-calendar>
+                    </div>
+                    <div class="col-12 lg:col-4 xl:col-2 flex align-items-center justify-content-left">
+                        <p-calendar [(ngModel)]="periodoFim" dateFormat="dd/mm/yy"></p-calendar>
+                    </div>
+               </div>
+               <div><h3>Atendimento Manual X Automático (Em %)</h3></div>
+               <div class="grid">
+                    <div class="col-12 lg:col-12 xl:col-12">
+                       <div class="card mb-0">
+                            <p-chart type="bar" [data]="chartDataManualAuto" [options]="chartOptionsManualAuto"></p-chart>
+                       </div>
+                    </div>
+               </div>
+            </div>
+        </div> 
+        <div class="col-12 lg:col-12 xl:col-12">
+            <div class="card mb-0">
+             <div class="grid">
+                    <div class="col-12 lg:col-12 xl:col-1 flex align-items-center justify-content-left px-7">
+                        <b>De:</b>
+                    </div>                        
+                    <div class="col-12 lg:col-4 xl:col-2 flex align-items-center justify-content-left">
+                        <p-calendar [(ngModel)]="dataCompareDe" view="year" dateFormat="yy" inputId="yearpicker"></p-calendar>
+                    </div>
+                    <div class="col-12 lg:col-12 xl:col-1 flex align-items-center justify-content-left px-7">
+                        <b>Com:</b>
+                    </div>                    
+                    <div class="col-12 lg:col-4 xl:col-2 flex align-items-center justify-content-left">
+                        <p-calendar [(ngModel)]="dataCompareCom" view="year" dateFormat="yy" inputId="yearpicker"></p-calendar>
+                    </div>
+                    <div class="col-12 lg:col-6 xl:col-1 flex align-items-center justify-content-left px-7">
+                        <b>Familía:</b>
+                    </div>
+                    <div class="col-12 lg:col-12 xl:col-2">
+                        <p-dropdown [options]="familias" [(ngModel)]="familiaSelecionada" optionLabel="descricao" [filter]="true" filterBy="descricao" [showClear]="true" placeholder="Seleciona Familía">
+                            <ng-template let-familia pTemplate="item">
+                                <div class="flex align-items-center gap-2">
+                                    <div>{{ familia.descricao }}</div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>                        
+                </div>                    
+               </div>
+               <div><h3>Comparação Produtividade (Ano X Com Ano Y)</h3></div>
+               <div class="grid">
+                    <div class="col-12 lg:col-12 xl:col-12">
+                       <div class="card mb-0">
+                            <p-chart type="bar" [data]="chartDataProdutividade" [options]="chartOptionsProdutividade"></p-chart>
+                       </div>
+                    </div>
+               </div>
+            </div>
+        </div>              
+                  
+ </div>

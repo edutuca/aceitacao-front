@@ -1,20 +1,33 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { Product } from '../../api/product';
 import { Subscription } from 'rxjs';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
-import { RestricoesService } from '../../service/restricao.service';
-import { Restricao } from '../../api/restricao';
 import { DetalheRestricao } from '../../api/detalhe.restricao';
+import { Restricao } from '../../api/restricao';
+import { RestricoesService } from '../../service/restricao.service';
+import { PropostaXPrazo } from '../../api/proposta.x.prazo';
+import { PropostaXPrazoService } from '../../service/proposta.x.prazo.service';
+import { PropostaStatusService } from '../../service/proposta.status.service';
+import { DetalheStatusGrade } from '../../api/detalhe.status.grade';
+import { StatusGrade } from '../../api/status.grade';
 
 @Component({
     templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnInit, OnDestroy {
 
+    periodoInicio!:Date;
+    periodoFim!:Date;
+
     items!: MenuItem[];
 
     restricoes!: Restricao[];
+
+    propostaXPrazos!: PropostaXPrazo[];
+
+    statusGrade!: StatusGrade[];
+
+    detalhePropostaGrade!: DetalheStatusGrade[];
 
     chartData: any;
 
@@ -28,10 +41,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     visibleDetalheRestricao!: boolean;
 
-    constructor(private restricaoService: RestricoesService, public layoutService: LayoutService) {
-        this.subscription = this.layoutService.configUpdate$.subscribe(() => {
-            this.initChart();
-        });
+    visibleDetalheStatusGrade!: boolean;
+
+    constructor(
+        private restricaoService: RestricoesService, 
+        private layoutService: LayoutService, 
+        private propostaXPrazoService: PropostaXPrazoService, 
+        private propostaStatusService:PropostaStatusService   
+    ) {
+
     }
 
     ngOnInit() {
@@ -40,7 +58,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
             this.restricoes = data;
         });
 
+        this.propostaXPrazoService.getPropostaXPrazo().subscribe(data=>{
+            this.propostaXPrazos = data;
+        })
 
+        this.propostaStatusService.getStatusGrade().subscribe(data=>{
+            this.statusGrade = data;
+        })
 
         this.items = [
             { label: 'Add New', icon: 'pi pi-fw pi-plus' },
@@ -53,30 +77,30 @@ export class DashboardComponent implements OnInit, OnDestroy {
         const textColor = documentStyle.getPropertyValue('--text-color');
         const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
         const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
-
+        
         this.chartData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
             datasets: [
                 {
-                    label: 'First Dataset',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    fill: false,
-                    backgroundColor: documentStyle.getPropertyValue('--bluegray-700'),
-                    borderColor: documentStyle.getPropertyValue('--bluegray-700'),
-                    tension: .4
+                    type: 'bar',
+                    label: '2024',
+                    backgroundColor: '#c94c4c',
+                    data: [2, 8, 11, 1, 2, 3, 5],
+                    borderColor: 'white',
+                    borderWidth: 2
                 },
                 {
-                    label: 'Second Dataset',
-                    data: [28, 48, 40, 19, 86, 27, 90],
-                    fill: false,
-                    backgroundColor: documentStyle.getPropertyValue('--green-600'),
-                    borderColor: documentStyle.getPropertyValue('--green-600'),
-                    tension: .4
+                    type: 'bar',
+                    label: '2025',
+                    backgroundColor: '#87CEFA',
+                    data: [5, 6, 9, 10, 11, 10, 1]
                 }
             ]
         };
-
+        
         this.chartOptions = {
+            maintainAspectRatio: false,
+            aspectRatio: 0.6,
             plugins: {
                 legend: {
                     labels: {
@@ -90,8 +114,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
                         color: textColorSecondary
                     },
                     grid: {
-                        color: surfaceBorder,
-                        drawBorder: false
+                        color: surfaceBorder
                     }
                 },
                 y: {
@@ -99,8 +122,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
                         color: textColorSecondary
                     },
                     grid: {
-                        color: surfaceBorder,
-                        drawBorder: false
+                        color: surfaceBorder
                     }
                 }
             }
@@ -115,6 +137,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
             this.restricaoDetalhe = data;
             this.visibleDetalheRestricao = true;
         });        
+    }
+
+    detalheStatusGrade(status: string) {
+        this.visibleDetalheStatusGrade = false;
+        this.propostaStatusService.getDetalhePropostaStatus(status).subscribe(data=>{
+            this.detalhePropostaGrade = data;
+            this.visibleDetalheStatusGrade = true;
+        });
     }
 
     executaFiltro() {
