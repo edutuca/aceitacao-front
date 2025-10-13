@@ -3,6 +3,8 @@ import { Emissor } from '../../api/emissor';
 import { EmissorService } from '../../service/emissor.service';
 import { Familia } from '../../api/familia';
 import { FamiliaService } from '../../service/familia.service';
+import { GrupoEmissor } from '../../api/grupo.emissor';
+import { SelectItem, SelectItemGroup } from 'primeng/api';
 
 @Component({
   selector: 'app-dashboard-produtividade',
@@ -38,14 +40,13 @@ export class DashboardProdutividadeComponent implements OnInit{
 
     familiaDescricao!:string[];
 
+    grupoEmissor:SelectItemGroup[] = [];
 
     constructor(private emissorService:EmissorService, private familiaService:FamiliaService){
     }
 
     ngOnInit() {
-        this.emissorService.getEmissores().subscribe(data=>{
-          this.emissores = data;
-        });
+        this.initComboEmissores();
 
         this.familiaService.getFamilias().subscribe(data=>{
           this.familias = data;
@@ -246,13 +247,13 @@ export class DashboardProdutividadeComponent implements OnInit{
         const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
         
         this.chartDataProdutividade = {
-            labels: ['2024','2025'],
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
             datasets: [
                 {
                     type: 'bar',
                     label: 'AUTO Recusados',
                     backgroundColor: '#c94c4c',
-                    data: [220,120],
+                    data: [2200,1020,3890,2303,4500,6087,1000,2000,8092,1090,1200,3000],
                     borderColor: 'white',
                     borderWidth: 2
                 },
@@ -260,7 +261,7 @@ export class DashboardProdutividadeComponent implements OnInit{
                     type: 'bar',
                     label: 'AUTO Liberados',
                     backgroundColor: '#87CEFA',
-                    data: [598,688]
+                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
                 }
             ]
         };
@@ -294,5 +295,46 @@ export class DashboardProdutividadeComponent implements OnInit{
                 }
             }
         };
+    }
+
+    private initComboEmissores() {
+
+        this.emissorService.getEmissores().subscribe(data=>{
+            
+        let descricaoGrupo:string = '';
+        let grupo:SelectItemGroup = {
+            label: '',
+            items: []
+        }
+
+        data.forEach(data=>{
+
+            let descricaoFormataGrupo = data.familia + ' - Grupo ' + data.idGrupo;
+
+            let emissor:SelectItem = {
+                label: data.matricula + ' - ' + data.nome,
+                value: data
+            };
+
+            if(descricaoGrupo != descricaoFormataGrupo) {
+
+                grupo = {
+                    label: descricaoFormataGrupo,
+                    value: {},
+                    items: [emissor]
+                };
+
+                grupo.items = [];
+                grupo.items.push(emissor);
+
+                this.grupoEmissor.push(grupo);
+
+                descricaoGrupo = descricaoFormataGrupo;
+            } else {
+                grupo.items.push(emissor);
+            }
+        });
+        console.log(this.grupoEmissor);
+       });
     }
 }
