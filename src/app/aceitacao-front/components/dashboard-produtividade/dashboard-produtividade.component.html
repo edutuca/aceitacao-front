@@ -32,8 +32,14 @@
                <div class="grid">
                     <div class="col-12 lg:col-12 xl:col-12">
                        <div class="card mb-0">
-                         <p-chart type="line" [data]="chartData" [options]="chartOptions"></p-chart>
-                       </div>
+                         <p-chart #chartMediaAtendimentoIndividual type="line" [data]="chartData" [options]="chartOptions"></p-chart>
+                        <div class="custom-legend">
+                        <div *ngFor="let ds of chartData.datasets; let i = index" (click)="toggleDatasetVisibility(i)">
+                            <span [style.backgroundColor]="ds.backgroundColor" class="legend-color-box"></span>
+                            {{ ds.label }}
+                        </div>
+                        </div>                         
+                       </div>                       
                     </div>
                </div>
             </div>

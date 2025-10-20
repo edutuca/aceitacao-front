@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Emissor } from '../../api/emissor';
-import { EmissorService } from '../../service/emissor.service';
-import { Familia } from '../../api/familia';
-import { FamiliaService } from '../../service/familia.service';
-import { GrupoEmissor } from '../../api/grupo.emissor';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SelectItem, SelectItemGroup } from 'primeng/api';
+import { Emissor } from '../../api/emissor';
+import { Familia } from '../../api/familia';
+import { EmissorService } from '../../service/emissor.service';
+import { FamiliaService } from '../../service/familia.service';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-dashboard-produtividade',
@@ -42,6 +42,8 @@ export class DashboardProdutividadeComponent implements OnInit{
 
     grupoEmissor:SelectItemGroup[] = [];
 
+    @ViewChild('chartMediaAtendimentoIndividual') chartMediaAtendimentoIndividual!: Chart;
+
     constructor(private emissorService:EmissorService, private familiaService:FamiliaService){
     }
 
@@ -55,7 +57,7 @@ export class DashboardProdutividadeComponent implements OnInit{
             this.familiaDescricao.push(fam.descricao);
           })
 
-          this.initChartBar();
+          this.initChartMediaAtendimentoIndividual();
           this.initChartStacked();
           this.initChartManualAuto();
           this.initChartProdutividadeComparacaoAno();
@@ -125,18 +127,18 @@ export class DashboardProdutividadeComponent implements OnInit{
         };
     }
 
-    initChartBar() {
+    initChartMediaAtendimentoIndividual() {
         const documentStyle = getComputedStyle(document.documentElement);
         const textColor = documentStyle.getPropertyValue('--text-color');
         const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
         const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
-        
+    
         this.chartData = {
             labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
             datasets: [
                 {
                     type: 'bar',
-                    label: '2024',
+                    label: 'Ano 2024 - AGRO-SAFRA - E105580 - Felipe Gasparino Rubia',
                     backgroundColor: '#c94c4c',
                     data: [2, 8, 11, 1, 2, 3, 5],
                     borderColor: 'white',
@@ -144,20 +146,35 @@ export class DashboardProdutividadeComponent implements OnInit{
                 },
                 {
                     type: 'bar',
-                    label: '2025',
+                    label: 'Ano 2025 - AGRO-SAFRA - E105580 - Felipe Gasparino Rubia',
                     backgroundColor: '#87CEFA',
                     data: [5, 6, 9, 10, 11, 10, 1]
-                }
+                },
+                {
+                    type: 'bar',
+                    label: 'Ano 2024 - AUTO - E107057 - Flavia Cecilia Nogueira Lazaro Claro',
+                    backgroundColor: '#c94c4c',
+                    data: [2, 8, 11, 1, 3, 8, 5],
+                    borderColor: 'white',
+                    borderWidth: 2
+                },
+                {
+                    type: 'bar',
+                    label: 'Ano 2025 - AUTO - E107057 - Flavia Cecilia Nogueira Lazaro Claro',
+                    backgroundColor: '#87CEFA',
+                    data: [9, 12, 1, 10, 11, 10, 1]
+                }                
             ]
         };
         
-        this.chartOptions = {
+        this.chartOptions = {           
             maintainAspectRatio: false,
             aspectRatio: 0.6,
             plugins: {
                 legend: {
+                    display: false,
                     labels: {
-                        color: textColor
+                        color: textColor                       
                     }
                 }
             },
@@ -334,7 +351,13 @@ export class DashboardProdutividadeComponent implements OnInit{
                 grupo.items.push(emissor);
             }
         });
-        console.log(this.grupoEmissor);
+        
        });
     }
+
+   toggleDatasetVisibility(index: number) {
+    const meta = this.chartMediaAtendimentoIndividual.getDatasetMeta(index);
+    //meta.hidden = meta.hidden === null ? !this.chartMediaAtendimentoIndividual.data.datasets[index].hidden : null;
+    this.chartMediaAtendimentoIndividual.update();
+   }
 }
