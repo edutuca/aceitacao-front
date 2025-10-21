@@ -1,0 +1,65 @@
+{
+	"data": [
+		{
+			"tipo": "PAN",
+			"percentual": 20,
+            "situacao":"automatico"
+		},
+		{
+			"tipo": "PAN",
+			"percentual": 80,
+            "situacao":"manual"
+		},        
+		{
+			"tipo": "VIS",
+			"percentual": 60,
+            "situacao":"automatico"
+		},        
+		{
+			"tipo": "VIS",
+			"percentual": 40,
+            "situacao":"manual"
+		}
+        ,
+		{
+			"tipo": "AJU",
+			"percentual": 90,
+            "situacao":"automatico"
+		},
+		{
+			"tipo": "AJU",
+			"percentual": 10,
+            "situacao":"manual"
+		},
+		{
+			"tipo": "BON",
+			"percentual": 80,
+            "situacao":"automatico"
+		},
+		{
+			"tipo": "BON",
+			"percentual": 20,
+            "situacao":"manual"
+		},
+		{
+			"tipo": "CRI",
+			"percentual": 90,
+            "situacao":"automatico"
+		},
+		{
+			"tipo": "CRI",
+			"percentual": 10,
+            "situacao":"manual"
+		},
+		{
+			"tipo": "REE",
+			"percentual": 50,
+            "situacao":"automatico"
+		},
+		{
+			"tipo": "REE",
+			"percentual": 50,
+            "situacao":"manual"
+		}
+	]
+}

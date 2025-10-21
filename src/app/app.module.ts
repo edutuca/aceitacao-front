@@ -11,6 +11,7 @@ import { EmissorService } from './aceitacao-front/service/emissor.service';
 import { LayoutService } from './layout/service/app.layout.service';
 import { MenuService } from './layout/app.menu.service';
 import { FamiliaService } from './aceitacao-front/service/familia.service';
+import { RestricaoLiberacaoAutomaticoXManualService } from './aceitacao-front/service/restricao.lib.auto.x.manual.service';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,9 @@ import { FamiliaService } from './aceitacao-front/service/familia.service';
         PropostaStatusService, 
         EmissorService, 
         FamiliaService,
-        LayoutService, MenuService
+        RestricaoLiberacaoAutomaticoXManualService,
+        LayoutService, 
+        MenuService
     ],
     bootstrap: [AppComponent]
 })
