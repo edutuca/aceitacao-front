@@ -3,16 +3,10 @@
             <div class="card mb-0">
              <div class="grid">
                 <div class="col-12 lg:col-12 xl:col-1 flex align-items-center justify-content-center">
-                    <b>Compara De:</b>
+                    <b>Ano:</b>
                 </div>                        
                 <div class="col-12 lg:col-4 xl:col-2 flex align-items-center justify-content-left">
-                    <p-calendar [(ngModel)]="dataCompareDe" view="year" dateFormat="yy" inputId="yearpicker"></p-calendar>
-                </div>
-                <div class="col-12 lg:col-12 xl:col-1 flex align-items-center justify-content-left px-7">
-                    <b>Com:</b>
-                </div>                    
-                <div class="col-12 lg:col-4 xl:col-2 flex align-items-center justify-content-left">
-                    <p-calendar [(ngModel)]="dataCompareCom" view="year" dateFormat="yy" inputId="yearpicker"></p-calendar>
+                    <p-calendar [(ngModel)]="dataCompareDe" view="month" dateFormat="yy/mm" inputId="yearpicker"></p-calendar>
                 </div>
                 <div class="col-12 lg:col-6 xl:col-1 flex align-items-center justify-content-left px-7">
                     <b>Emissor:</b>

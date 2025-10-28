@@ -12,9 +12,9 @@ import { DetalheStatusGrade } from '../../api/detalhe.status.grade';
 import { StatusGrade } from '../../api/status.grade';
 
 @Component({
-    templateUrl: './dashboard.component.html',
+    templateUrl: './dashboard-grade-emissor.component.html',
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardGradeEmissorComponent implements OnInit, OnDestroy {
 
     periodoInicio!:Date;
     periodoFim!:Date;

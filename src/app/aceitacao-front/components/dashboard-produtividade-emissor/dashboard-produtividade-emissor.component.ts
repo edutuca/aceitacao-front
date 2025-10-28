@@ -1,19 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SelectItem, SelectItemGroup } from 'primeng/api';
+import { UIChart } from 'primeng/chart';
 import { Emissor } from '../../api/emissor';
 import { Familia } from '../../api/familia';
 import { EmissorService } from '../../service/emissor.service';
 import { FamiliaService } from '../../service/familia.service';
-import { Chart } from 'chart.js';
-import { UIChart } from 'primeng/chart';
 import { RestricaoLiberacaoAutomaticoXManualService } from '../../service/restricao.lib.auto.x.manual.service';
 
 @Component({
   selector: 'app-dashboard-produtividade',
-  templateUrl: './dashboard-produtividade.component.html',
-  styleUrls: ['./dashboard-produtividade.component.scss']
+  templateUrl: './dashboard-produtividade-emissor.component.html',
+  styleUrls: ['./dashboard-produtividade-emissor.component.scss']
 })
-export class DashboardProdutividadeComponent implements OnInit{
+export class DashboardProdutividadeEmissorComponent implements OnInit{
     dataCompareDe!: Date;
     dataCompareCom!: Date;
 
