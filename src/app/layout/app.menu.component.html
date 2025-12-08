@@ -3,4 +3,95 @@
         <li app-menuitem *ngIf="!item.separator" [item]="item" [index]="i" [root]="true"></li>
         <li *ngIf="item.separator" class="menu-separator"></li>
     </ng-container>
+    <p-divider></p-divider>    
+    <li class="ng-tns-c5-19 layout-root-menuitem ng-star-inserted">
+          <p-accordion [activeIndex]="0">
+             <p-accordionTab header="FILTROS AVANÇADOS">
+                <div class="field grid">
+                        <label for="firstname3" class="col-fixed" style="width:100%">Tipo busca:</label>
+                        <div class="col">
+                            <p-dropdown [options]="tipoBusca" [(ngModel)]="tipoBuscaSelecionado" optionLabel="descricao"></p-dropdown>
+                        </div>
+                </div>
+                <div *ngIf="tipoBuscaSelecionado?.descricao == 'Emissor'" class="field grid">
+                        <label for="firstname3" class="col-fixed" style="width:100%">Emissor:</label>
+                        <div class="col">
+                            <p-dropdown [options]="tipoBusca" [(ngModel)]="tipoBuscaSelecionado" optionLabel="descricao"></p-dropdown>
+                        </div>
+                </div>
+                <div *ngIf="tipoBuscaSelecionado?.descricao == 'Sucursal'" class="field grid">
+                        <label for="firstname3" class="col-fixed" style="width:100%">Surcusal:</label>
+                        <div class="col">
+                            <p-dropdown [options]="tipoBusca" [(ngModel)]="tipoBuscaSelecionado" optionLabel="descricao"></p-dropdown>
+                        </div>
+                </div> 
+                <div *ngIf="tipoBuscaSelecionado?.descricao == 'Local Captador'" class="field grid">
+                        <label for="firstname3" class="col-fixed" style="width:100%">Local Captador:</label>
+                        <div class="col">
+                            <p-dropdown [options]="tipoBusca" [(ngModel)]="tipoBuscaSelecionado" optionLabel="descricao"></p-dropdown>
+                        </div>
+                </div>
+                <div *ngIf="tipoBuscaSelecionado?.descricao == 'Corretor'" class="field grid">
+                        <label for="firstname3" class="col-fixed" style="width:100%">Corretor:</label>
+                        <div class="col">
+                            <p-inputNumber [(ngModel)]="codigoCorretor" inputId="minmax" inputId="minmax" mode="decimal" [min]="0" [max]="99999999"> </p-inputNumber>
+                        </div>
+                </div>
+                <div *ngIf="tipoBuscaSelecionado?.descricao == 'Assessoria'" class="field grid">
+                        <label for="firstname3" class="col-fixed" style="width:100%">Assessoria:</label>
+                        <div class="col">
+                            <p-dropdown [options]="tipoBusca" [(ngModel)]="tipoBuscaSelecionado" optionLabel="descricao"></p-dropdown>
+                        </div>
+                </div>        
+                <div *ngIf="tipoBuscaSelecionado?.descricao == 'Segurado'" class="field grid">
+                        <label for="firstname3" class="col-fixed" style="width:100%">Segurado:</label>
+                        <div class="col">
+                            <p-dropdown [options]="tipoBusca" [(ngModel)]="tipoBuscaSelecionado" optionLabel="descricao"></p-dropdown>
+                        </div>
+                </div> 
+                <div class="field grid">
+                        <label for="firstname3" class="col-fixed" style="width:100%">Pendência Emissor:</label>
+                        <div class="col">
+                            <p-dropdown [options]="tipoBusca" [(ngModel)]="tipoBuscaSelecionado" optionLabel="descricao"></p-dropdown>
+                        </div>
+                </div>
+                <div class="field grid">
+                        <label for="firstname3" class="col-fixed" style="width:100%">Parada de Tempo:</label>
+                        <div class="col">
+                            <p-dropdown [options]="tipoBusca" [(ngModel)]="tipoBuscaSelecionado" optionLabel="descricao"></p-dropdown>
+                        </div>
+                </div>    
+                <div class="field grid">
+                        <label for="firstname3" class="col-fixed" style="width:100%">Situação proposta:</label>
+                        <div class="col">
+                            <p-dropdown [options]="tipoBusca" [(ngModel)]="tipoBuscaSelecionado" optionLabel="descricao"></p-dropdown>
+                        </div>
+                </div> 
+                <div class="field grid">
+                        <label for="firstname3" class="col-fixed" style="width:100%">Pendência Corretor/Segurado:</label>
+                        <div class="col">
+                            <p-dropdown [options]="tipoBusca" [(ngModel)]="tipoBuscaSelecionado" optionLabel="descricao"></p-dropdown>
+                        </div>
+                </div>
+                <div class="field grid">
+                        <label for="firstname3" class="col-fixed" style="width:100%">Proposta:</label>
+                        <div class="col">
+                            <p-inputNumber [(ngModel)]="codigoCorretor" inputId="minmax" inputId="minmax" mode="decimal" [min]="0" [max]="99999999"> </p-inputNumber>
+                        </div>
+                </div>
+                <div class="field grid">
+                        <label for="firstname3" class="col-fixed" style="width:100%">Endosso:</label>
+                        <div class="col">
+                            <p-inputNumber [(ngModel)]="codigoCorretor" inputId="minmax" inputId="minmax" mode="decimal" [min]="0" [max]="99999999"> </p-inputNumber>
+                        </div>
+                </div>      
+                <div class="field grid">
+                        <label for="firstname3" class="col-fixed" style="width:100%">Pendência Interna:</label>
+                        <div class="col">
+                            <p-dropdown [options]="tipoBusca" [(ngModel)]="tipoBuscaSelecionado" optionLabel="descricao"></p-dropdown>
+                        </div>
+                </div>                          
+              </p-accordionTab>
+          </p-accordion>                
+     </li>
 </ul>

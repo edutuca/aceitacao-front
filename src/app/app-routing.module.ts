@@ -1,5 +1,5 @@
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { NotfoundComponent } from './aceitacao-front/components/notfound/notfound.component';
 import { AppLayoutComponent } from "./layout/app.layout.component";
 
@@ -9,8 +9,9 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
             {
                 path: '', component: AppLayoutComponent,
                 children: [
-                    { path: '', loadChildren: () => import('./aceitacao-front/components/dashboard-grade/dashboard.module').then(m => m.DashboardModule) },
-                    { path: 'dashboard-produtividade', loadChildren: () => import('./aceitacao-front/components/dashboard-produtividade/dashboard-produtividade.module').then(m => m.DashboardProdutividadeModule) }
+                    { path: 'dashboard-grade-emissor', loadChildren: () => import('./aceitacao-front/components/dashboard-grade-emissor/dashboard-grade-emissor.module').then(m => m.DashboardGradeEmissorModule) },
+                    { path: 'dashboard-produtividade-emissor', loadChildren: () => import('./aceitacao-front/components/dashboard-produtividade-emissor/dashboard-produtividade-emissor.module').then(m => m.DashboardProdutividadeEmissorModule) },
+                    { path: 'dashboard-produtividade-gestor', loadChildren: () => import('./aceitacao-front/components/dashboard-produtividade-gestor/dashboard-produtividade-gestor.module').then(m => m.DashboardProdutividadeGestorModule) }
                     
                 ]
             },

@@ -17,6 +17,11 @@ import { AppConfigModule } from './config/config.module';
 import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppLayoutComponent } from "./app.layout.component";
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { AccordionModule } from 'primeng/accordion';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { DropdownModule } from 'primeng/dropdown';
+import { DividerModule } from 'primeng/divider';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @NgModule({
     declarations: [
@@ -39,7 +44,12 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
         RippleModule,
         RouterModule,
         AppConfigModule,
-        OverlayPanelModule
+        OverlayPanelModule,
+        AccordionModule,
+        ScrollPanelModule,
+        DropdownModule,
+        DividerModule,
+        InputNumberModule
     ],
     exports: [AppLayoutComponent]
 })

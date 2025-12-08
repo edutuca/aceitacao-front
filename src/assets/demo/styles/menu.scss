@@ -1,0 +1,16 @@
+.layout-menu {
+  .p-accordion .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link {
+    background: #FFFFFF;
+    color: #000000;
+  } 
+  
+  .p-accordion .p-accordion-header .p-accordion-header-link {
+    background: #FFFFFF;
+    color: #000000;
+  }
+
+  .p-dropdown {
+    width: 100% !important;
+  }   
+}
+
