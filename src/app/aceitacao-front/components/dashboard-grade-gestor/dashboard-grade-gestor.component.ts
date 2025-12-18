@@ -14,7 +14,8 @@ import { RestricoesService } from '../../service/restricao.service';
 
 @Component({
   selector: 'app-dashboard-grade-gestor',
-  templateUrl: './dashboard-grade-gestor.component.html'
+  templateUrl: './dashboard-grade-gestor.component.html',
+  styleUrls: ['./dashboard-grade-gestor.component.scss']
 })
 export class DashboardGradeGestorComponent {
     periodoInicio!:Date;

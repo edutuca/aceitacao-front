@@ -11,3 +11,13 @@
     height: 15px;
     margin-right: 5px;
   }
+
+  .exporta-arquivo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: '3.0rem';
+    height: '3.0rem';
+    resize: both;
+    overflow: auto;
+  }

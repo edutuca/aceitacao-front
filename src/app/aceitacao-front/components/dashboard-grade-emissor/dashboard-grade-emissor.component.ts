@@ -13,6 +13,7 @@ import { StatusGrade } from '../../api/status.grade';
 
 @Component({
     templateUrl: './dashboard-grade-emissor.component.html',
+    styleUrls: ['./dashboard-grade-emissor.component.scss']
 })
 export class DashboardGradeEmissorComponent implements OnInit, OnDestroy {
 

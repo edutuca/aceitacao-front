@@ -8,8 +8,8 @@
                 <div class="col-12 lg:col-4 xl:col-2 flex align-items-center justify-content-left">
                     <p-calendar [(ngModel)]="dataCompareDe" view="month" dateFormat="mm/yy" inputId="yearpicker"></p-calendar>
                 </div>
-                <div class="col-12 lg:col-6 xl:col-1 flex align-items-center justify-content-left px-7">
-                    <b>Emissor:</b>
+                <div class="col-12 lg:col-7 xl:col-1 flex align-items-center justify-content-left px-7">
+                    <b>Grupo de Distribuição:</b>
                 </div>
                 <div class="col-12 lg:col-12 xl:col-2">
                     <p-multiSelect [options]="grupoEmissor" [group]="true" [(ngModel)]="emissoresSelecionados" defaultLabel="Selecione os Emissores" display="chip">
@@ -24,10 +24,8 @@
                         </ng-template>                           
                     </p-multiSelect>   
                 </div>
-                <div class="col-12 lg:col-6 xl:col-6">
-                     <div class="flex justify-content-center md:justify-content-end">
-                        <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
-                    </div>
+                <div class="col flex justify-content-end align-items-start">
+                       <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
                 </div>
             </div>
                <div><h3>Media de Emissão (Em Dias)</h3></div>
@@ -74,10 +72,8 @@
                             </ng-template>                           
                         </p-multiSelect>   
                     </div>
-                    <div class="col-12 lg:col-4 xl:col-4">
-                        <div class="flex justify-content-center md:justify-content-end">
-                            <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
-                        </div>
+                    <div class="col flex justify-content-end align-items-start">
+                        <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
                     </div>
                </div>
                <div><h3>Media Atendimento Por Familía De Produto (Em Dias)</h3></div>
@@ -102,11 +98,9 @@
                     <div class="col-12 lg:col-4 xl:col-2 flex align-items-center justify-content-left">
                         <p-calendar [(ngModel)]="periodoFim" dateFormat="dd/mm/yy"></p-calendar>
                     </div>
-                    <div class="col-12 lg:col-7 xl:col-7">
-                        <div class="flex justify-content-center md:justify-content-end">
-                            <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
-                        </div>
-                    </div>                    
+                    <div class="col flex justify-content-end align-items-start">
+                        <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
+                    </div>                
                </div>
                <div><h3>Atendimento Manual X Automático Por Produto (Em %)</h3></div>
                <div class="grid">
@@ -136,10 +130,8 @@
                             </ng-template>
                         </p-dropdown>                        
                     </div>
-                    <div class="col-12 lg:col-7 xl:col-7">
-                        <div class="flex justify-content-center md:justify-content-end">
-                            <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
-                        </div>
+                    <div class="col flex justify-content-end align-items-start">
+                        <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
                     </div>                                        
                </div>
                <div><h3>Atendimento Manual X Automático Por Restrição (Em %)</h3></div>
@@ -191,10 +183,8 @@
                             </ng-template>
                         </p-dropdown>                        
                     </div>
-                    <div class="col-12 lg:col-3 xl:col-3">
-                        <div class="flex justify-content-center md:justify-content-end">
-                            <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
-                        </div>
+                    <div class="col flex justify-content-end align-items-start">
+                        <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
                     </div>                    
                </div>
                <div><h3>Propostas Recusadas e Liberadas No Ano</h3></div>
@@ -234,10 +224,8 @@
                             </ng-template>
                         </p-dropdown>                        
                     </div>
-                    <div class="col-12 lg:col-6 xl:col-6">
-                        <div class="flex justify-content-center md:justify-content-end">
-                            <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
-                        </div>
+                    <div class="col flex justify-content-end align-items-start">
+                        <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
                     </div>                                        
                </div>
                <div><h3>Top 5 Motivos de Recusa das Propostas</h3></div>

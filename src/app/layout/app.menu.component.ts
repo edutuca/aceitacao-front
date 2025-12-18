@@ -14,6 +14,8 @@ export class AppMenuComponent implements OnInit {
     tipoBusca: any[] = [];
     tipoBuscaSelecionado: any;
 
+    situacaoProposta: any[] = [];
+
     codigoCorretor!: number;
 
     constructor(public layoutService: LayoutService) { }
@@ -38,17 +40,33 @@ export class AppMenuComponent implements OnInit {
          ];
 
          this.loadComboFiltroAvancado();
+         this.loadComboSituacaoProposta();
     }
 
     private loadComboFiltroAvancado() {
         this.tipoBusca = [
-            {descricao:"Emissor"},
             {descricao:"Sucursal"},
-            {descricao:"Local Captador"},
             {descricao:"Corretor"},
             {descricao:"Assessoria"},
             {descricao:"Segurado"}
         ];
                 	
+    }
+
+    private loadComboSituacaoProposta() {
+        this.situacaoProposta = [
+            {
+                status:"GRD",
+                descricao: "GRADE"
+            },
+            {
+                status:"REC",
+                descricao: "RECUSADO"
+            },
+            {
+                status:"LIB",
+                descricao: "LIBERADO"
+            }
+        ]
     }
 }
