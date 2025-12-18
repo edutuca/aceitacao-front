@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { SelectItem, SelectItemGroup } from 'primeng/api';
+import { SelectItemGroup } from 'primeng/api';
 import { UIChart } from 'primeng/chart';
-import { Emissor } from '../../api/emissor';
 import { Familia } from '../../api/familia';
 import { EmissorService } from '../../service/emissor.service';
 import { FamiliaService } from '../../service/familia.service';
@@ -34,10 +33,6 @@ export class DashboardProdutividadeEmissorComponent implements OnInit{
     chartDataQtdRecusaPorMotivo:any;
     chartOptionsQtdRecusaPorMotivo:any;
 
-    emissores!: Emissor[];
-
-    emissoresSelecionados!: Emissor[];
-
     periodoInicio!:Date;
     periodoFim!:Date;
 
@@ -61,8 +56,6 @@ export class DashboardProdutividadeEmissorComponent implements OnInit{
     }
 
     ngOnInit() {
-        this.initComboEmissores();
-
         this.familiaService.getFamilias().subscribe(data=>{
           this.familias = data;
           this.familiaDescricao = [];
@@ -151,52 +144,37 @@ export class DashboardProdutividadeEmissorComponent implements OnInit{
         const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
     
         this.chartData = {
-            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+            labels: ['Janeiro/2025'],
             datasets: [
                 {
-                    type: 'bar',
-                    label: 'Ano 2024 - AGRO-SAFRA - Felipe Gasparino Rubia',
+                    label: 'AGRO-SAFRA - Felipe Gasparino Rubia  - Qtd Proposta(s): 6 - Media',
                     backgroundColor: '#c94c4c',
-                    data: [2, 8, 11, 1, 2, 3, 5],
+                    data: [2],
                     tipo:'Recusado',
+                    hidden: true
                 },
                 {
-                    type: 'bar',
-                    label: 'Ano 2025 - AGRO-SAFRA - Felipe Gasparino Rubia',
+                    label: 'AGRO-SAFRA - Felipe Gasparino Rubia - Qtd Proposta(s): 340 - Media',
                     backgroundColor: '#87CEFA',
                     tipo:'Liberado',
-                    data: [5, 6, 9, 10, 11, 10, 1]
-                },
-                {
-                    type: 'bar',
-                    label: 'Ano 2024 - AUTO - Flavia Cecilia Nogueira Lazaro Claro',
-                    backgroundColor: '#c94c4c',
-                    data: [2, 8, 11, 1, 3, 8, 5],
-                    tipo:'Recusado'
-                },
-                {
-                    type: 'bar',
-                    label: 'Ano 2025 - AUTO - Flavia Cecilia Nogueira Lazaro Claro',
-                    backgroundColor: '#87CEFA',
-                    tipo:'Liberado',
-                    data: [9, 12, 1, 10, 11, 10, 1]
-                }                
+                    data: [4]
+                }         
             ],
-            secudaryDataSet:[{
-                backgroundColor: '#c94c4c',
-                label: 'Recusado'
-            },
+            secudaryDataSet:[
             {
                 backgroundColor: '#87CEFA',
                 label: 'Liberado'
+            },
+            {
+                backgroundColor: '#c94c4c',
+                label: 'Recusado'
             }
             ]
         };
-        
-        this.chartOptions = {
-            indexAxis: 'y',           
+
+        this.chartOptions = { 
             maintainAspectRatio: false,
-            aspectRatio: 0.3,
+            aspectRatio: 0.9,
             plugins: {
                 legend: {
                     display: false,
@@ -742,46 +720,6 @@ export class DashboardProdutividadeEmissorComponent implements OnInit{
         };
     }    
 
-    private initComboEmissores() {
-
-        this.emissorService.getEmissores().subscribe(data=>{
-            
-        let descricaoGrupo:string = '';
-        let grupo:SelectItemGroup = {
-            label: '',
-            items: []
-        }
-
-        data.forEach(data=>{
-
-            let descricaoFormataGrupo = data.familia + ' - Grupo ' + data.idGrupo;
-
-            let emissor:SelectItem = {
-                label: data.matricula + ' - ' + data.nome,
-                value: data
-            };
-
-            if(descricaoGrupo != descricaoFormataGrupo) {
-
-                grupo = {
-                    label: descricaoFormataGrupo,
-                    value: {},
-                    items: [emissor]
-                };
-
-                grupo.items = [];
-                grupo.items.push(emissor);
-
-                this.grupoEmissor.push(grupo);
-
-                descricaoGrupo = descricaoFormataGrupo;
-            } else {
-                grupo.items.push(emissor);
-            }
-        });
-        
-       });
-    }
 
    toggleDatasetVisibilityIndividual(index: number, inicioDescricaoId:string) {
         this.toggleDatasetVisibility(this.chartMediaAtendimentoIndividual, index, inicioDescricaoId,'tipo');

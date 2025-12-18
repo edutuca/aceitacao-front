@@ -22,6 +22,7 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { DropdownModule } from 'primeng/dropdown';
 import { DividerModule } from 'primeng/divider';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
     declarations: [
@@ -49,7 +50,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
         ScrollPanelModule,
         DropdownModule,
         DividerModule,
-        InputNumberModule
+        InputNumberModule,
+        ButtonModule
     ],
     exports: [AppLayoutComponent]
 })

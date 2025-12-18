@@ -6,6 +6,8 @@ import { UIChart } from 'primeng/chart';
 import { EmissorService } from '../../service/emissor.service';
 import { FamiliaService } from '../../service/familia.service';
 import { RestricaoLiberacaoAutomaticoXManualService } from '../../service/restricao.lib.auto.x.manual.service';
+import { Chart } from 'chart.js';
+import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-dashboard-produtividade-gestor',
@@ -151,58 +153,56 @@ export class DashboardProdutividadeGestorComponent {
         const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
     
         this.chartData = {
-            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+            labels: ['Janeiro/2025'],
             datasets: [
                 {
-                    type: 'bar',
-                    label: 'Ano 2024 - AGRO-SAFRA - Felipe Gasparino Rubia',
+                    label: 'AGRO-SAFRA - Felipe Gasparino Rubia - Qtd Proposta(s): 34 - Media',
                     backgroundColor: '#c94c4c',
-                    data: [2, 8, 11, 1, 2, 3, 5],
+                    data: [2],
                     tipo:'Recusado',
+                    hidden: true
                 },
                 {
-                    type: 'bar',
-                    label: 'Ano 2025 - AGRO-SAFRA - Felipe Gasparino Rubia',
+                    label: 'AGRO-SAFRA - Felipe Gasparino Rubia - Qtd Proposta(s): 234 - Media',
                     backgroundColor: '#87CEFA',
                     tipo:'Liberado',
-                    data: [5, 6, 9, 10, 11, 10, 1]
+                    data: [4]
                 },
                 {
-                    type: 'bar',
-                    label: 'Ano 2024 - AUTO - Flavia Cecilia Nogueira Lazaro Claro',
+                    label: 'AUTO - Flavia Cecilia Nogueira Lazaro Claro - Qtd Proposta(s): 23 - Media',
                     backgroundColor: '#c94c4c',
-                    data: [2, 8, 11, 1, 3, 8, 5],
-                    tipo:'Recusado'
+                    data: [6],
+                    tipo:'Recusado',
+                    hidden: true
                 },
                 {
-                    type: 'bar',
-                    label: 'Ano 2025 - AUTO - Flavia Cecilia Nogueira Lazaro Claro',
+                    label: 'AUTO - Flavia Cecilia Nogueira Lazaro Claro - Qtd Proposta(s): 634 - Media',
                     backgroundColor: '#87CEFA',
                     tipo:'Liberado',
-                    data: [9, 12, 1, 10, 11, 10, 1]
+                    data: [2]
                 }                
             ],
-            secudaryDataSet:[{
-                backgroundColor: '#c94c4c',
-                label: 'Recusado'
-            },
+            secudaryDataSet:[
             {
                 backgroundColor: '#87CEFA',
                 label: 'Liberado'
+            },
+            {
+                backgroundColor: '#c94c4c',
+                label: 'Recusado'
             }
             ]
         };
-        
-        this.chartOptions = {
-            indexAxis: 'y',           
+
+        this.chartOptions = { 
             maintainAspectRatio: false,
-            aspectRatio: 0.3,
+            aspectRatio: 0.9,
             plugins: {
                 legend: {
                     display: false,
                     labels: {
-                        color: textColor                       
-                    }
+                        color: textColor                           
+                    },                                        
                 }
             },
             scales: {

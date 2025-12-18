@@ -8,18 +8,23 @@
                 <div class="col-12 lg:col-4 xl:col-2 flex align-items-center justify-content-left">
                     <p-calendar [(ngModel)]="dataCompareDe" view="month" dateFormat="mm/yy" inputId="yearpicker"></p-calendar>
                 </div>
+                <div class="col-12 lg:col-9 xl:col-9">
+                     <div class="flex justify-content-center md:justify-content-end">
+                        <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
+                    </div>
+                </div>                
             </div>
-               <div><h3>Media Atendimento Individual (Em Dias)</h3></div>
+               <div><h3>Media de Emissão (Em Dias)</h3></div>
                <div class="grid">
                     <div class="col-12 lg:col-12 xl:col-12">
                        <div class="card mb-0">
                         <div class="custom-legend">
                         <div *ngFor="let ds of chartData?.secudaryDataSet; let i = index" (click)="toggleDatasetVisibilityIndividual(i,'legend-')">
                             <span [style.backgroundColor]="ds.backgroundColor" class="legend-color-box"></span>
-                            <span id="legend-{{i}}">{{ ds.label }}</span>
+                            <span id="legend-{{i}}" style="{{(ds.label == 'Recusado')?'text-decoration: line-through;':''}}">{{ ds.label }}</span>
                         </div>
                         </div>                        
-                         <p-chart #chartMediaAtendimentoIndividual type="line" [data]="chartData" [options]="chartOptions"></p-chart>
+                         <p-chart #chartMediaAtendimentoIndividual type="bar" [data]="chartData" [options]="chartOptions"></p-chart>
                        </div>                       
                     </div>
                </div>
@@ -36,23 +41,12 @@
                     </div>
                     <div class="col-12 lg:col-4 xl:col-2">
                         <p-calendar [(ngModel)]="periodoFim" dateFormat="dd/mm/yy"></p-calendar>
-                    </div>
-                    <div class="col-12 lg:col-6 xl:col-1 flex align-items-center justify-content-left px-7">
-                        <b>Emissor:</b>
-                    </div>
-                    <div class="col-12 lg:col-12 xl:col-2">    
-                        <p-multiSelect [options]="grupoEmissor" [group]="true" [(ngModel)]="emissoresSelecionados" defaultLabel="Selecione os Emissores" display="chip">
-                            <ng-template let-value pTemplate="selectedItems">
-                                <div *ngIf="!emissoresSelecionados || emissoresSelecionados.length === 0">Selecione os Emissores</div>
-                                <div *ngIf="emissoresSelecionados && emissoresSelecionados.length > 0">Emissores {{emissoresSelecionados.length}}</div>
-                            </ng-template>                            
-                            <ng-template let-group pTemplate="group">
-                                <div class="flex align-items-center">
-                                    <span>{{ group.label }}</span>
-                                </div>
-                            </ng-template>                           
-                        </p-multiSelect>   
-                    </div>                    
+                    </div>    
+                    <div class="col-12 lg:col-7 xl:col-7">
+                        <div class="flex justify-content-center md:justify-content-end">
+                            <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
+                        </div>
+                    </div>                                   
                </div>
                <div><h3>Media Atendimento Por Familía De Produto (Em Dias)</h3></div>
                <div class="grid">
