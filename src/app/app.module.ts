@@ -13,6 +13,7 @@ import { MenuService } from './layout/app.menu.service';
 import { FamiliaService } from './aceitacao-front/service/familia.service';
 import { RestricaoLiberacaoAutomaticoXManualService } from './aceitacao-front/service/restricao.lib.auto.x.manual.service';
 
+
 @NgModule({
     declarations: [
         AppComponent, NotfoundComponent

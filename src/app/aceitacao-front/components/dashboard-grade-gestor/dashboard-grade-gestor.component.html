@@ -3,17 +3,18 @@
                     <b>Emissor:</b>
                 </div>
                 <div class="flex-1 flex font-bold m-2 px-1 py-3">
-                    <p-multiSelect [options]="grupoEmissor" [group]="true" [(ngModel)]="emissoresSelecionados" defaultLabel="Selecione os Emissores" display="chip">
-                    <ng-template let-value pTemplate="selectedItems">
-                        <div *ngIf="!emissoresSelecionados || emissoresSelecionados.length === 0">Selecione os Emissores</div>
-                    <div *ngIf="emissoresSelecionados && emissoresSelecionados.length > 0">Emissores {{emissoresSelecionados.length}}</div>
-                    </ng-template>
-                            <ng-template let-group pTemplate="group">
-                            <div class="flex align-items-center">
-                                <span>{{ group.label }}</span>
+                    <p-dropdown [options]="emissores" [(ngModel)]="emissoresSelecionados" [filter]="true" filterBy="descricao" placeholder="Selecione Um Emissor">
+                        <ng-template pTemplate="selectedItem">
+                            <div class="flex align-items-center" *ngIf="emissoresSelecionados">
+                               <div>{{ emissoresSelecionados?.descricao }}</div>
                             </div>
-                            </ng-template>                           
-                    </p-multiSelect>   
+                        </ng-template>
+                        <ng-template let-emissor pTemplate="item">
+                            <div class="flex align-items-center">
+                                <span>{{ emissor.descricao }}</span>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
                 </div>          
     </div>
     

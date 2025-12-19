@@ -5,6 +5,10 @@ import { Familia } from '../../api/familia';
 import { EmissorService } from '../../service/emissor.service';
 import { FamiliaService } from '../../service/familia.service';
 import { RestricaoLiberacaoAutomaticoXManualService } from '../../service/restricao.lib.auto.x.manual.service';
+import { Chart } from 'chart.js';
+import annotationPlugin from 'chartjs-plugin-annotation';
+
+Chart.register(annotationPlugin);
 
 @Component({
   selector: 'app-dashboard-produtividade',
@@ -172,15 +176,37 @@ export class DashboardProdutividadeEmissorComponent implements OnInit{
             ]
         };
 
-        this.chartOptions = { 
+     this.chartOptions = { 
             maintainAspectRatio: false,
             aspectRatio: 0.9,
             plugins: {
-                legend: {
+                annotation: {
+                    annotations: {
+                    linhaReferencia: {
+                        type: 'line',
+                        scaleID: 'y',
+                        value: 2,
+                        borderColor: documentStyle.getPropertyValue('--blue-500'),
+                        borderDash: [5, 5],
+                        label: {
+                            display: true,
+                            content: 'Média: 2', 
+                            position: 'end',
+                            backgroundColor: documentStyle.getPropertyValue('--blue-500'),
+                            color: '#FFFFFF',
+                            font: {
+                            size: 12,
+                            weight: 'bold'
+                            }
+                        }                     
+                    }
+                }
+            },
+             legend: {
                     display: false,
                     labels: {
-                        color: textColor                       
-                    }
+                        color: textColor                           
+                    },                                        
                 }
             },
             scales: {
@@ -193,6 +219,7 @@ export class DashboardProdutividadeEmissorComponent implements OnInit{
                     }
                 },
                 y: {
+                    beginAtZero: true,
                     ticks: {
                         color: textColorSecondary
                     },
@@ -587,104 +614,6 @@ export class DashboardProdutividadeEmissorComponent implements OnInit{
                     tipo: 'Liberado',
                     data: [598,680,399,900,122,999,300,35,80,19,20,40]
                 }
-              /*  {
-                    type: 'bar',
-                    label: 'RECUSA POR REGULAMENTO INTERNO EMPRESA',
-                    backgroundColor: '#c94c4c',
-                    tipo: 'Recusado',
-                    data: [2200,1020,3890,2303,4500,6087,1000,2000,8092,1090,1200,3000]
-                },
-                {
-                    type: 'bar',
-                    label: 'RECUSA POR FALTA DE RETORNO À COBRANÇA DE PENDÊNCIA',
-                    backgroundColor: '#87CEFA',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'DEVOLUÇÃO DEVIDO CORRETOR ESTAR COM CADASTRO SUSPENSO',
-                    backgroundColor: '#3fbe8aff',
-                    tipo: 'Recusado',
-                    data: [2200,1020,3890,2303,4500,6087,1000,2000,8092,1090,1200,3000]
-                },
-                {
-                    type: 'bar',
-                    label: 'VISTORIA PRÉVIA NÃO APROVADA',
-                    backgroundColor: '#153a2eff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'VISTORIA PRÉVIA NÃO REALIZADA',
-                    backgroundColor: '#0e3650ff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'PROPOSTA RECUSADA A PEDIDO DO CORRETOR/SEGURADO',
-                    backgroundColor: '#a7991cff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'BONUS DIVERGENTE',
-                    backgroundColor: '#6f7703ff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'VISTORIA PREVIA DIGITAL NÃO REALIZADA',
-                    backgroundColor: '#cc6d2eff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'VISTORIA PRÉVIA DIGITAL NÃO FINALIZADA - AUSÊNCIA FOTOS COMPLEMENTARES',
-                    backgroundColor: '#a35ab9ff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'DUPLICIDADE DE PROPOSTA',
-                    backgroundColor: '#3f4549ff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'ASSINATURA DIGITAL NÃO CONCLUÍDA',
-                    backgroundColor: '#0d0d0eff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'VISTORIA PRÉVIA SEM AGENDAMENTO',
-                    backgroundColor: '#422d2eff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'DADOS DO CARTÃO DE CRÉDITO NÃO ENVIADO PELO SEGURADO',
-                    backgroundColor: '#0bb5e9ff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'VISTORIA PRÉVIA NÃO CONCLUÍDA - FOTOS NÃO ENVIADAS E/OU INCORRETAS',
-                    backgroundColor: '#a73ceeff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                }*/
             ]
         };
         

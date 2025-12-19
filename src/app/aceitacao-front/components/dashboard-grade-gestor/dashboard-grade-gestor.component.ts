@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MenuItem, SelectItem, SelectItemGroup } from 'primeng/api';
+import { MenuItem, SelectItemGroup } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { DetalheRestricao } from '../../api/detalhe.restricao';
 import { DetalheStatusGrade } from '../../api/detalhe.status.grade';
@@ -45,9 +45,9 @@ export class DashboardGradeGestorComponent {
 
     visibleDetalheStatusGrade!: boolean;
 
-    emissores!: Emissor[];
+    emissores: any[] = [];
     
-    emissoresSelecionados!: Emissor[];
+    emissoresSelecionados!: any;
 
     grupoEmissor:SelectItemGroup[] = [];
 
@@ -165,39 +165,12 @@ export class DashboardGradeGestorComponent {
     private initComboEmissores() {
 
         this.emissorService.getEmissores().subscribe(data=>{
-            
-        let descricaoGrupo:string = '';
-        let grupo:SelectItemGroup = {
-            label: '',
-            items: []
-        }
 
         data.forEach(data=>{
-
-            let descricaoFormataGrupo = data.familia + ' - Grupo ' + data.idGrupo;
-
-            let emissor:SelectItem = {
-                label: data.matricula + ' - ' + data.nome,
-                value: data
-            };
-
-            if(descricaoGrupo != descricaoFormataGrupo) {
-
-                grupo = {
-                    label: descricaoFormataGrupo,
-                    value: {},
-                    items: [emissor]
-                };
-
-                grupo.items = [];
-                grupo.items.push(emissor);
-
-                this.grupoEmissor.push(grupo);
-
-                descricaoGrupo = descricaoFormataGrupo;
-            } else {
-                grupo.items.push(emissor);
-            }
+          this.emissores.push({
+                matricula: data.matricula,
+                descricao: data.matricula + ' - ' + data.nome
+           });
         });
         
        });

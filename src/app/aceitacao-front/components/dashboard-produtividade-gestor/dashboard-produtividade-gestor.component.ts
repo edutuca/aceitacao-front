@@ -1,13 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
-import { Emissor } from '../../api/emissor';
-import { Familia } from '../../api/familia';
 import { SelectItem, SelectItemGroup } from 'primeng/api';
 import { UIChart } from 'primeng/chart';
+import { Emissor } from '../../api/emissor';
+import { Familia } from '../../api/familia';
 import { EmissorService } from '../../service/emissor.service';
 import { FamiliaService } from '../../service/familia.service';
 import { RestricaoLiberacaoAutomaticoXManualService } from '../../service/restricao.lib.auto.x.manual.service';
+
 import { Chart } from 'chart.js';
-import { style } from '@angular/animations';
+import annotationPlugin from 'chartjs-plugin-annotation';
+
+Chart.register(annotationPlugin);
 
 @Component({
   selector: 'app-dashboard-produtividade-gestor',
@@ -51,6 +54,9 @@ export class DashboardProdutividadeGestorComponent {
 
     grupoEmissor:SelectItemGroup[] = [];
 
+    grupoDistribuicao:any[] = [];
+    grupoDistribuicaoSelecionado:any;
+
     @ViewChild('chartMediaAtendimentoIndividual') chartMediaAtendimentoIndividual!: UIChart;
     @ViewChild('chartManualAutomaticoPorRestricao') chartManualAutomaticoPorRestricao!: UIChart;
     @ViewChild('chartRecusadaLiberadaNoAno') chartRecusadaLiberadaNoAno!: UIChart;
@@ -63,6 +69,8 @@ export class DashboardProdutividadeGestorComponent {
     }
 
     ngOnInit() {
+
+        this.initComboGruipoDistribuicao();
         this.initComboEmissores();
 
         this.familiaService.getFamilias().subscribe(data=>{
@@ -154,33 +162,97 @@ export class DashboardProdutividadeGestorComponent {
     
         this.chartData = {
             labels: ['Janeiro/2025'],
-            datasets: [
+            datasets: [         
                 {
-                    label: 'AGRO-SAFRA - Felipe Gasparino Rubia - Qtd Proposta(s): 34 - Media',
+                    type: 'bar',
+                    label: 'AUTO - Felipe Gasparino Rubia - Qtd Proposta(s): 34 - Media',
+                    backgroundColor: '#c94c4c',
+                    data: [10],
+                    tipo:'Recusado',
+                    hidden: true
+                },
+                {
+                    type: 'bar',
+                    label: 'AUTO - Felipe Gasparino Rubia - Qtd Proposta(s): 234 - Media',
+                    backgroundColor: '#87CEFA',
+                    tipo:'Liberado',
+                    data: [5]
+                },
+                {
+                    type: 'bar',
+                    label: 'AUTO - Flavia Cecilia Nogueira Lazaro Claro - Qtd Proposta(s): 23 - Media',
+                    backgroundColor: '#c94c4c',
+                    data: [8],
+                    tipo:'Recusado',
+                    hidden: true
+                },
+                {
+                    type: 'bar',
+                    label: 'AUTO - Flavia Cecilia Nogueira Lazaro Claro - Qtd Proposta(s): 634 - Media',
+                    backgroundColor: '#87CEFA',
+                    tipo:'Liberado',
+                    data: [1]
+                },
+                {
+                    type: 'bar',
+                    label: 'AUTO - Cintia Regina De Lima - Qtd Proposta(s): 13 - Media',
+                    backgroundColor: '#c94c4c',
+                    data: [3],
+                    tipo:'Recusado',
+                    hidden: true
+                },
+                {
+                    type: 'bar',
+                    label: 'AUTO - Cintia Regina De Lima - Qtd Proposta(s): 234 - Media',
+                    backgroundColor: '#87CEFA',
+                    tipo:'Liberado',
+                    data: [5]
+                },
+                {
+                    type: 'bar',
+                    label: 'AUTO - Ana Claudia da Silva - Qtd Proposta(s): 0 - Media',
+                    backgroundColor: '#c94c4c',
+                    data: [0],
+                    tipo:'Recusado',
+                    hidden: true
+                },
+                {
+                    type: 'bar',
+                    label: 'AUTO - Ana Claudia da Silva - Qtd Proposta(s): 104 - Media',
+                    backgroundColor: '#87CEFA',
+                    tipo:'Liberado',
+                    data: [9]
+                },
+                {
+                    type: 'bar',
+                    label: 'AUTO - Giselle Donadio Simonetti - Qtd Proposta(s): 1 - Media',
+                    backgroundColor: '#c94c4c',
+                    data: [1],
+                    tipo:'Recusado',
+                    hidden: true
+                },
+                {
+                    type: 'bar',
+                    label: 'AUTO - Giselle Donadio Simonetti - Qtd Proposta(s): 14 - Media',
+                    backgroundColor: '#87CEFA',
+                    tipo:'Liberado',
+                    data: [10]
+                },
+                {
+                    type: 'bar',
+                    label: 'AUTO - Julia Braga - Qtd Proposta(s): 201 - Media',
                     backgroundColor: '#c94c4c',
                     data: [2],
                     tipo:'Recusado',
                     hidden: true
                 },
                 {
-                    label: 'AGRO-SAFRA - Felipe Gasparino Rubia - Qtd Proposta(s): 234 - Media',
+                    type: 'bar',
+                    label: 'AUTO - Julia Braga - Qtd Proposta(s): 585 - Media',
                     backgroundColor: '#87CEFA',
                     tipo:'Liberado',
-                    data: [4]
-                },
-                {
-                    label: 'AUTO - Flavia Cecilia Nogueira Lazaro Claro - Qtd Proposta(s): 23 - Media',
-                    backgroundColor: '#c94c4c',
-                    data: [6],
-                    tipo:'Recusado',
-                    hidden: true
-                },
-                {
-                    label: 'AUTO - Flavia Cecilia Nogueira Lazaro Claro - Qtd Proposta(s): 634 - Media',
-                    backgroundColor: '#87CEFA',
-                    tipo:'Liberado',
-                    data: [2]
-                }                
+                    data: [1]
+                }
             ],
             secudaryDataSet:[
             {
@@ -198,7 +270,29 @@ export class DashboardProdutividadeGestorComponent {
             maintainAspectRatio: false,
             aspectRatio: 0.9,
             plugins: {
-                legend: {
+                annotation: {
+                    annotations: {
+                    linhaReferencia: {
+                        type: 'line',
+                        scaleID: 'y',
+                        value: 5,
+                        borderColor: documentStyle.getPropertyValue('--blue-500'),
+                        borderDash: [5, 5],
+                        label: {
+                            display: true,
+                            content: 'Média: 5', 
+                            position: 'end',
+                            backgroundColor: documentStyle.getPropertyValue('--blue-500'),
+                            color: '#FFFFFF',
+                            font: {
+                            size: 12,
+                            weight: 'bold'
+                            }
+                        }                     
+                    }
+                }
+            },
+             legend: {
                     display: false,
                     labels: {
                         color: textColor                           
@@ -215,6 +309,7 @@ export class DashboardProdutividadeGestorComponent {
                     }
                 },
                 y: {
+                    beginAtZero: true,
                     ticks: {
                         color: textColorSecondary
                     },
@@ -609,104 +704,6 @@ export class DashboardProdutividadeGestorComponent {
                     tipo: 'Liberado',
                     data: [598,680,399,900,122,999,300,35,80,19,20,40]
                 }
-              /*  {
-                    type: 'bar',
-                    label: 'RECUSA POR REGULAMENTO INTERNO EMPRESA',
-                    backgroundColor: '#c94c4c',
-                    tipo: 'Recusado',
-                    data: [2200,1020,3890,2303,4500,6087,1000,2000,8092,1090,1200,3000]
-                },
-                {
-                    type: 'bar',
-                    label: 'RECUSA POR FALTA DE RETORNO À COBRANÇA DE PENDÊNCIA',
-                    backgroundColor: '#87CEFA',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'DEVOLUÇÃO DEVIDO CORRETOR ESTAR COM CADASTRO SUSPENSO',
-                    backgroundColor: '#3fbe8aff',
-                    tipo: 'Recusado',
-                    data: [2200,1020,3890,2303,4500,6087,1000,2000,8092,1090,1200,3000]
-                },
-                {
-                    type: 'bar',
-                    label: 'VISTORIA PRÉVIA NÃO APROVADA',
-                    backgroundColor: '#153a2eff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'VISTORIA PRÉVIA NÃO REALIZADA',
-                    backgroundColor: '#0e3650ff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'PROPOSTA RECUSADA A PEDIDO DO CORRETOR/SEGURADO',
-                    backgroundColor: '#a7991cff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'BONUS DIVERGENTE',
-                    backgroundColor: '#6f7703ff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'VISTORIA PREVIA DIGITAL NÃO REALIZADA',
-                    backgroundColor: '#cc6d2eff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'VISTORIA PRÉVIA DIGITAL NÃO FINALIZADA - AUSÊNCIA FOTOS COMPLEMENTARES',
-                    backgroundColor: '#a35ab9ff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'DUPLICIDADE DE PROPOSTA',
-                    backgroundColor: '#3f4549ff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'ASSINATURA DIGITAL NÃO CONCLUÍDA',
-                    backgroundColor: '#0d0d0eff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'VISTORIA PRÉVIA SEM AGENDAMENTO',
-                    backgroundColor: '#422d2eff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'DADOS DO CARTÃO DE CRÉDITO NÃO ENVIADO PELO SEGURADO',
-                    backgroundColor: '#0bb5e9ff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'VISTORIA PRÉVIA NÃO CONCLUÍDA - FOTOS NÃO ENVIADAS E/OU INCORRETAS',
-                    backgroundColor: '#a73ceeff',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                }*/
             ]
         };
         
@@ -741,6 +738,16 @@ export class DashboardProdutividadeGestorComponent {
             }
         };
     }    
+
+    private initComboGruipoDistribuicao() {
+        this.emissorService.getEmissores().subscribe(data=>{
+             data.forEach(data=>{
+                this.grupoDistribuicao.push({
+                    descricao: data.familia + ' - Grupo ' + data.idGrupo
+                });
+            });
+        });
+    }
 
     private initComboEmissores() {
 

@@ -13,6 +13,7 @@ export class AppMenuComponent implements OnInit {
 
     tipoBusca: any[] = [];
     tipoBuscaSelecionado: any;
+    situacaoPropostaSelecionado: any;
 
     situacaoProposta: any[] = [];
 

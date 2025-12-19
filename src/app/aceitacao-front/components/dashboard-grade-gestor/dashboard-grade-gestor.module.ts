@@ -14,6 +14,7 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { TableModule } from 'primeng/table';
 import { DashboardGradeGestorRoutingModule } from './dashboard-grade-gestor-routing.module';
 import { DashboardGradeGestorComponent } from './dashboard-grade-gestor.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 
@@ -32,7 +33,8 @@ import { DashboardGradeGestorComponent } from './dashboard-grade-gestor.componen
         DividerModule,
         DialogModule,
         CalendarModule,
-        MultiSelectModule
+        MultiSelectModule,
+        DropdownModule
     ],
     declarations: [DashboardGradeGestorComponent]
 })

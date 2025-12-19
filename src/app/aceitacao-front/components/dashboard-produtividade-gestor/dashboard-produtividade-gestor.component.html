@@ -1,31 +1,15 @@
- <div class="grid">
+<div class="grid">
         <div class="col-12 lg:col-12 xl:col-12">
             <div class="card mb-0">
              <div class="grid">
-                <div class="col-12 lg:col-12 xl:col-1 flex align-items-center justify-content-center">
-                    <b>Mês/Ano:</b>
-                </div>                        
-                <div class="col-12 lg:col-4 xl:col-2 flex align-items-center justify-content-left">
-                    <p-calendar [(ngModel)]="dataCompareDe" view="month" dateFormat="mm/yy" inputId="yearpicker"></p-calendar>
-                </div>
-                <div class="col-12 lg:col-7 xl:col-1 flex align-items-center justify-content-left px-7">
-                    <b>Grupo de Distribuição:</b>
-                </div>
-                <div class="col-12 lg:col-12 xl:col-2">
-                    <p-multiSelect [options]="grupoEmissor" [group]="true" [(ngModel)]="emissoresSelecionados" defaultLabel="Selecione os Emissores" display="chip">
-                        <ng-template let-value pTemplate="selectedItems">
-                            <div *ngIf="!emissoresSelecionados || emissoresSelecionados.length === 0">Selecione os Emissores</div>
-                            <div *ngIf="emissoresSelecionados && emissoresSelecionados.length > 0">Emissores {{emissoresSelecionados.length}}</div>
-                        </ng-template>
-                        <ng-template let-group pTemplate="group">
-                         <div class="flex align-items-center">
-                           <span>{{ group.label }}</span>
-                         </div>
-                        </ng-template>                           
-                    </p-multiSelect>   
+                <div class="p-3"><b>Mês/Ano:</b></div>
+                <div class="col-2 p-2"><p-calendar [(ngModel)]="dataCompareDe" view="month" dateFormat="mm/yy" inputId="yearpicker"></p-calendar></div>                    
+                <div class="p-3"><b>Grupo de Distribuição: </b></div>
+                <div class="p-2">
+                    <p-dropdown [options]="grupoDistribuicao" [showClear]="true" [filter]="true" [(ngModel)]="grupoDistribuicaoSelecionado" optionLabel="descricao"></p-dropdown>
                 </div>
                 <div class="col flex justify-content-end align-items-start">
-                       <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
+                    <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
                 </div>
             </div>
                <div><h3>Media de Emissão (Em Dias)</h3></div>
@@ -38,7 +22,7 @@
                             <span id="legend-{{i}}" style="{{(ds.label == 'Recusado')?'text-decoration: line-through;':''}}">{{ ds.label }}</span>
                         </div>
                         </div>                        
-                         <p-chart #chartMediaAtendimentoIndividual type="bar" [data]="chartData" [options]="chartOptions"></p-chart>
+                         <p-chart #chartMediaAtendimentoIndividual type="line" [data]="chartData" [options]="chartOptions"></p-chart>
                        </div>                       
                     </div>
                </div>
