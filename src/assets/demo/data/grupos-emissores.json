@@ -1,0 +1,47 @@
+{
+	"data": [
+	{
+		"familia":"AGRO-SAFRA",
+		"idGrupo": 29,
+		"matricula": "E105580",
+		"nome": "Felipe Gasparino Rubia"
+	},
+	{
+		"familia":"AUTO",
+		"idGrupo": 3,
+		"matricula": "E107057",
+		"nome": "Flavia Cecilia Nogueira Lazaro Claro"
+	},
+	{
+		"familia":"AUTO",
+		"idGrupo": 6,
+		"matricula": "E108323",
+		"nome": "Leandro Costa Correa"
+	},
+	{
+		"familia":"AUTO",
+		"idGrupo": 6,
+		"matricula": "E106735",
+		"nome": "DEIVID FERREIRA DA SILVA"
+	},
+	{
+		"familia":"AUTO",
+		"idGrupo": 6,
+		"matricula": "E107356",
+		"nome": "Karoline Almeida Silva"
+	},
+	{
+		"familia":"AUTO",
+		"idGrupo": 6,
+		"matricula": "E105694",
+		"nome": "VIVIANE PEREIRA DE SOUSA"
+	},
+	{
+		"familia":"EMPRESARIAL",
+		"idGrupo": 1,
+		"matricula": "E106435",
+		"nome": "Roseli Dantas Coutinho"
+	}
+]
+}
+  

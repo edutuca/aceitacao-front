@@ -2,19 +2,17 @@
         <div class="col-12 lg:col-12 xl:col-12">
             <div class="card mb-0">
              <div class="grid">
-                <div class="col-12 lg:col-12 xl:col-1 flex align-items-center justify-content-center">
-                    <b>Mês/Ano:</b>
-                </div>                        
-                <div class="col-12 lg:col-4 xl:col-2 flex align-items-center justify-content-left">
-                    <p-calendar [(ngModel)]="dataCompareDe" view="month" dateFormat="mm/yy" inputId="yearpicker"></p-calendar>
+                <div class="p-3"><b>Mês/Ano:</b></div>
+                <div class="col-2 p-2"><p-calendar [(ngModel)]="dataCompareDe" view="month" dateFormat="mm/yy" inputId="yearpicker"></p-calendar></div>                    
+                <div class="p-3"><b>Grupo de Distribuição: </b></div>
+                <div class="p-2">
+                    <p-dropdown [options]="grupoDistribuicao" [showClear]="true" [filter]="true" [(ngModel)]="grupoDistribuicaoSelecionado" optionLabel="descricao"></p-dropdown>
                 </div>
-              
                 <div class="col flex justify-content-end align-items-start">
-                       <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
-                </div>
-                             
+                    <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
+                </div>                            
             </div>
-               <div><h3>Media de Emissão (Em Dias)</h3></div>
+               <div><h3>Média de Emissão (Em Dias)</h3></div>
                <div class="grid">
                     <div class="col-12 lg:col-12 xl:col-12">
                        <div class="card mb-0">
@@ -46,7 +44,7 @@
                         <p-button [style]="{'width': '2.8rem', 'height': '2.8rem'}" icon="pi pi-file-export"></p-button>
                     </div>                                   
                </div>
-               <div><h3>Media Atendimento Por Familía De Produto (Em Dias)</h3></div>
+               <div><h3>Média Atendimento Por Familía De Produto (Em Dias)</h3></div>
                <div class="grid">
                     <div class="col-12 lg:col-12 xl:col-12">
                        <div class="card mb-0">

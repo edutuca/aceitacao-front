@@ -23,13 +23,13 @@
                 <div *ngIf="tipoBuscaSelecionado?.descricao == 'Assessoria'" class="field grid">
                         <label for="firstname3" class="col-fixed" style="width:100%">Assessoria:</label>
                         <div class="col">
-                            <p-dropdown [options]="tipoBusca" [(ngModel)]="tipoBuscaSelecionado" optionLabel="descricao"></p-dropdown>
+                            <p-dropdown [options]="assessorias" [(ngModel)]="assessoriaSelecionada" optionLabel="descricao"></p-dropdown>
                         </div>
                 </div>        
                 <div *ngIf="tipoBuscaSelecionado?.descricao == 'Segurado'" class="field grid">
-                        <label for="firstname3" class="col-fixed" style="width:100%">Segurado:</label>
+                        <label for="firstname3" class="col-fixed" style="width:100%">CPF/CNPJ:</label>
                         <div class="col">
-                            <p-dropdown [options]="tipoBusca" [(ngModel)]="tipoBuscaSelecionado" optionLabel="descricao"></p-dropdown>
+                            <p-inputNumber [(ngModel)]="cpfCnpjSegurado" inputId="minmax" inputId="minmax" mode="decimal" [min]="0" [max]="99999999"> </p-inputNumber>
                         </div>
                 </div>     
                 <div class="field grid">
@@ -47,7 +47,7 @@
 
                 <div>
                         <div class="flex justify-content-center md:justify-content-end">
-                            <p-button label="Pesquisar"></p-button>
+                            <p-button label="Pesquisar" (click)="pesquisaProposta()"></p-button>
                         </div>
                 </div>                 
               </p-accordionTab>

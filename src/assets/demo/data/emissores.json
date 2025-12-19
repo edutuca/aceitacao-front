@@ -1,47 +1,658 @@
-{
-	"data": [
-	{
-		"familia":"AGRO-SAFRA",
-		"idGrupo": 29,
-		"matricula": "E105580",
-		"nome": "Felipe Gasparino Rubia"
-	},
-	{
-		"familia":"AUTO",
-		"idGrupo": 3,
-		"matricula": "E107057",
-		"nome": "Flavia Cecilia Nogueira Lazaro Claro"
-	},
-	{
-		"familia":"AUTO",
-		"idGrupo": 6,
-		"matricula": "E108323",
-		"nome": "Leandro Costa Correa"
-	},
-	{
-		"familia":"AUTO",
-		"idGrupo": 6,
-		"matricula": "E106735",
-		"nome": "DEIVID FERREIRA DA SILVA"
-	},
-	{
-		"familia":"AUTO",
-		"idGrupo": 6,
-		"matricula": "E107356",
-		"nome": "Karoline Almeida Silva"
-	},
-	{
-		"familia":"AUTO",
-		"idGrupo": 6,
-		"matricula": "E105694",
-		"nome": "VIVIANE PEREIRA DE SOUSA"
-	},
-	{
-		"familia":"EMPRESARIAL",
-		"idGrupo": 1,
-		"matricula": "E106435",
-		"nome": "Roseli Dantas Coutinho"
-	}
+[
+    {
+        "nome": "ADRIANA MARILYN ORTEGA",
+        "matricula": "E103085"
+    },
+    {
+        "nome": "Adrilles Rienes Mariano",
+        "matricula": "E108181"
+    },
+    {
+        "nome": "ALEXANDRE MARTINS RODRIGUES",
+        "matricula": " E103494"
+    },
+    {
+        "nome": "ALEXANDRE MARTINS RODRIGUES",
+        "matricula": "E103494"
+    },
+    {
+        "nome": "Alexia Azevedo Da Costa",
+        "matricula": "E109701"
+    },
+    {
+        "nome": "Amanda Caroline Andreto Fernandes",
+        "matricula": "E108287"
+    },
+    {
+        "nome": "Amanda Jessica Felix ",
+        "matricula": "E105264"
+    },
+    {
+        "nome": "Ana Claudia da Silva",
+        "matricula": "E108308"
+    },
+    {
+        "nome": "Ana Claudia Souza de O. Kubalak",
+        "matricula": "E107764"
+    },
+    {
+        "nome": "ANA LUCIA CRIPA COSTA",
+        "matricula": "E106060"
+    },
+    {
+        "nome": "André Hiroshi Tanaka",
+        "matricula": "E109800"
+    },
+    {
+        "nome": "ANDREZA CARDOSO PEREIRA CASTRO ",
+        "matricula": "E106953"
+    },
+    {
+        "nome": "Angelo Chiarella Fernandes",
+        "matricula": "T808807"
+    },
+    {
+        "nome": "Aparecida Silva Nunes Ferreira",
+        "matricula": "E109315"
+    },
+    {
+        "nome": "Augusto Dos Santos Souza",
+        "matricula": "T808670"
+    },
+    {
+        "nome": "Bianca da Cunha Cappuccio",
+        "matricula": "E107518"
+    },
+    {
+        "nome": "Bruno Souza de Sena Barbosa",
+        "matricula": "E107009"
+    },
+    {
+        "nome": "Caio Luis Da Silva",
+        "matricula": "E109282"
+    },
+    {
+        "nome": "Carlos Binda",
+        "matricula": "E105785"
+    },
+    {
+        "nome": "Carol Ferrari Vianna",
+        "matricula": "E108831"
+    },
+    {
+        "nome": "Caroline Maria Costa Ayub da Silva",
+        "matricula": "E107279"
+    },
+    {
+        "nome": "CHARLES MARQUES DE AZEVEDO",
+        "matricula": "E107337"
+    },
+    {
+        "nome": "Cintia Regina De Lima ",
+        "matricula": "E105364"
+    },
+    {
+        "nome": "Claudia Marques Lopes Dos Sant",
+        "matricula": "E105638"
+    },
+    {
+        "nome": "CRISTIANO PARAVANI DE FREITAS",
+        "matricula": "E105357"
+    },
+    {
+        "nome": "Dalila Castilho Pires ",
+        "matricula": "E105685"
+    },
+    {
+        "nome": "Danilo Pereira Medeiros",
+        "matricula": "E107405"
+    },
+    {
+        "nome": "DEBORA GARCIA LIMA",
+        "matricula": "E103900"
+    },
+    {
+        "nome": "DEIVID FERREIRA DA SILVA",
+        "matricula": "E106735"
+    },
+    {
+        "nome": "Diego Pontes Martins",
+        "matricula": "E106471"
+    },
+    {
+        "nome": "Diego Silva de Freitas",
+        "matricula": "E108555"
+    },
+    {
+        "nome": "DIRCE GOMES DOS SANTOS FUZA ",
+        "matricula": "E106891"
+    },
+    {
+        "nome": "Douglas Da Silva",
+        "matricula": "E109858"
+    },
+    {
+        "nome": "Edmilson Martins dos Santos",
+        "matricula": "E102737"
+    },
+    {
+        "nome": "Eduardo de Oliveira Ootuca",
+        "matricula": "E108184"
+    },
+    {
+        "nome": "EDUARDO FONSECA MARTINS",
+        "matricula": "E106348"
+    },
+    {
+        "nome": "ERIKA SANTOS ANSELMO",
+        "matricula": "E106523"
+    },
+    {
+        "nome": "Evelyn Oliveira dos Santos ",
+        "matricula": "E107589"
+    },
+    {
+        "nome": "Everson Carvalho da Silva",
+        "matricula": "E109862"
+    },
+    {
+        "nome": "Fabiano da Silva e Silva",
+        "matricula": "E110198"
+    },
+    {
+        "nome": "Fabio de Albuquerque Carvalho",
+        "matricula": "E106931"
+    },
+    {
+        "nome": "Felipe Gasparino Rubia",
+        "matricula": "E105580"
+    },
+    {
+        "nome": "Felipe Macedo Soares",
+        "matricula": "E105713"
+    },
+    {
+        "nome": "FERNANDA CASSERO TEODORO",
+        "matricula": "E105091"
+    },
+    {
+        "nome": "Filipe Augusto de Castro Lopes",
+        "matricula": "E108906"
+    },
+    {
+        "nome": "Flavia Cecilia Nogueira Lazaro Claro",
+        "matricula": "E107057"
+    },
+    {
+        "nome": "Giovanni Andreassa Caracho",
+        "matricula": "E109420"
+    },
+    {
+        "nome": "Gleyce A. Moreno da Cruz Brunholi",
+        "matricula": "E104542"
+    },
+    {
+        "nome": "Guilherme Carvalho Marcussi",
+        "matricula": "E109825"
+    },
+    {
+        "nome": "Guilherme Kazuo Fujii",
+        "matricula": "E108182"
+    },
+    {
+        "nome": "Harley Ferreira Silva",
+        "matricula": "E110033"
+    },
+    {
+        "nome": "Heloisa Amaral Barreto",
+        "matricula": "T807472"
+    },
+    {
+        "nome": "HELOISA DA SILVA PINTO DE MORAES",
+        "matricula": "E105487"
+    },
+    {
+        "nome": "Ian Ferreira Lopes",
+        "matricula": "E109997"
+    },
+    {
+        "nome": "Israel Ribeiro Roque",
+        "matricula": "T809351"
+    },
+    {
+        "nome": "Izabel Izumi Sato",
+        "matricula": "E102188"
+    },
+    {
+        "nome": "Jady Prates da Silva",
+        "matricula": "E107827"
+    },
+    {
+        "nome": "Jeferson Dos Santos Silva",
+        "matricula": "E108617"
+    },
+    {
+        "nome": "Jennifer de Lima Santoro",
+        "matricula": "E110613"
+    },
+    {
+        "nome": "Jennifer de Lima Santoro",
+        "matricula": "E110084"
+    },
+    {
+        "nome": "JESSICA MESQUITA SANTOS",
+        "matricula": "E107008"
+    },
+    {
+        "nome": "Joao Neto",
+        "matricula": "E102339"
+    },
+    {
+        "nome": "Joao Victor Rodrigues Dos Santos",
+        "matricula": "E109139"
+    },
+    {
+        "nome": "João Victor Rodrigues Dos Santos",
+        "matricula": "T806648"
+    },
+    {
+        "nome": "João Vitor Castequini Ghilardi",
+        "matricula": "E110004"
+    },
+    {
+        "nome": "João Vitor Santana",
+        "matricula": "T807911"
+    },
+    {
+        "nome": "JONNY SABURO NAKAYAMA",
+        "matricula": "E106956"
+    },
+    {
+        "nome": "JOSELI EDILEUZA DE MELO SILVA",
+        "matricula": "E106505"
+    },
+    {
+        "nome": "Joyce Campos Ricardo",
+        "matricula": "E107307"
+    },
+    {
+        "nome": "Juan Pablo Castro",
+        "matricula": "E110180"
+    },
+    {
+        "nome": "Julia Braga",
+        "matricula": "E108819"
+    },
+    {
+        "nome": "Julia Carvalho Cabral",
+        "matricula": "E107521"
+    },
+    {
+        "nome": "JULIANA GONCALVES FIGHERA",
+        "matricula": "E107426"
+    },
+    {
+        "nome": "JULIANE GONÇALVES SVET DICONO",
+        "matricula": "E107187"
+    },
+    {
+        "nome": "Justino Varjão Do Nascimento",
+        "matricula": "E109300"
+    },
+    {
+        "nome": "Kaio Alves Torres",
+        "matricula": "T809706"
+    },
+    {
+        "nome": "KARINE RODRIGUES MONTEIRO",
+        "matricula": "E106886"
+    },
+    {
+        "nome": "Karoline Almeida Silva",
+        "matricula": "E107356"
+    },
+    {
+        "nome": "KATIA CILENE LAINO",
+        "matricula": "E105353"
+    },
+    {
+        "nome": "Kelly Hilario de Oliveira",
+        "matricula": "E106105"
+    },
+    {
+        "nome": "Kewin Takayuki Maciel",
+        "matricula": "E109466"
+    },
+    {
+        "nome": "Lais Cristina Fernandes",
+        "matricula": "E108597"
+    },
+    {
+        "nome": "Larissa Aparecida Nagao",
+        "matricula": "E105539"
+    },
+    {
+        "nome": "Leandro Costa Correa",
+        "matricula": "E108323"
+    },
+    {
+        "nome": "Leandro Manhães Gaspar",
+        "matricula": "T809178"
+    },
+    {
+        "nome": "LEONARDO FERREIRA DO AMARAL",
+        "matricula": "E105892"
+    },
+    {
+        "nome": "Lig Eliana Megumi Habiro Boaglio",
+        "matricula": "E105824"
+    },
+    {
+        "nome": "Lilian Dantas Lima Da Silva ",
+        "matricula": "E107698"
+    },
+    {
+        "nome": "Luana Fernandes Guimaraes",
+        "matricula": "E106605"
+    },
+    {
+        "nome": "Lucas Andre Gomes Dos Santos",
+        "matricula": "E109538"
+    },
+    {
+        "nome": "Lucas De Felice Fernandes",
+        "matricula": "T809179"
+    },
+    {
+        "nome": "Lucas Medeiros Bezerra",
+        "matricula": "E108509"
+    },
+    {
+        "nome": "Lucca Baratera Rosa",
+        "matricula": "E110063"
+    },
+    {
+        "nome": "LUCIANA MACIEL",
+        "matricula": "E105465"
+    },
+    {
+        "nome": "Luciana Ozaki",
+        "matricula": "E107512"
+    },
+    {
+        "nome": "Luiz Fernando Taddeo",
+        "matricula": "E108964"
+    },
+    {
+        "nome": "MARCIA CARVALHO DOS SANTOS FERREIRA",
+        "matricula": "E106739"
+    },
+    {
+        "nome": "Marcus Vinicius Oliveira Silva",
+        "matricula": "E108725"
+    },
+    {
+        "nome": "Maria Aparecida Ballabinute",
+        "matricula": "E108383"
+    },
+    {
+        "nome": "Maria Regina Candido Fiori",
+        "matricula": "E102543"
+    },
+    {
+        "nome": "MARINES REIS DOS SANTOS",
+        "matricula": "E110322"
+    },
+    {
+        "nome": "Marta Aparecida Candido Viana",
+        "matricula": "T807811"
+    },
+    {
+        "nome": "Matheus de Oliveira Souza",
+        "matricula": "E110118"
+    },
+    {
+        "nome": "Matheus Murilo Bezerra De Oliveira",
+        "matricula": "T807676"
+    },
+    {
+        "nome": "Matheus Murilo Bezerra de Oliveira",
+        "matricula": "E110486"
+    },
+    {
+        "nome": "Matheus Murilo Bezerra de Oliveira",
+        "matricula": "E109743"
+    },
+    {
+        "nome": "Matheus Pereira Silva",
+        "matricula": "T808027"
+    },
+    {
+        "nome": "Mayara Da Silva Sousa",
+        "matricula": "T808221"
+    },
+    {
+        "nome": "Michael Silva de Sousa",
+        "matricula": "E109925"
+    },
+    {
+        "nome": "Mikal Yen Matsumoto",
+        "matricula": "E106449"
+    },
+    {
+        "nome": "Murillo Fernandes Florentino",
+        "matricula": "T809376"
+    },
+    {
+        "nome": "Murillo Fernandes Florentino",
+        "matricula": "E110674"
+    },
+    {
+        "nome": "Mylena Cristina Santos Franca",
+        "matricula": "E107824"
+    },
+    {
+        "nome": "NAIR MORETTI",
+        "matricula": "E105024"
+    },
+    {
+        "nome": "Natã Pedro",
+        "matricula": "T809766"
+    },
+    {
+        "nome": "Orestes Fernandes Filho",
+        "matricula": "E108177"
+    },
+    {
+        "nome": "Pamela Oliveira Silva",
+        "matricula": "E108531"
+    },
+    {
+        "nome": "PATRICIA ALVES DA SILVA",
+        "matricula": "E105522"
+    },
+    {
+        "nome": "PATRICIA ALVES DE ANDRADE",
+        "matricula": "E105094"
+    },
+    {
+        "nome": "Paulo Henrique De Oliveira",
+        "matricula": "E109075"
+    },
+    {
+        "nome": "Paulo Henrique Do Nascimento Martins",
+        "matricula": "E109062"
+    },
+    {
+        "nome": "PRISCILA ROCHA MONTAGNANO",
+        "matricula": "E102692"
+    },
+    {
+        "nome": "Rafael Mendonca De Brito",
+        "matricula": "E109221"
+    },
+    {
+        "nome": "Raquel Pereira Couto",
+        "matricula": "E105201"
+    },
+    {
+        "nome": "REGIANE DA SILVA SANTOS",
+        "matricula": "E106071"
+    },
+    {
+        "nome": "Rejane Cristina Fernandes Teixeira Carvajal",
+        "matricula": "E109936"
+    },
+    {
+        "nome": "Rejane Cristina Sanchetta Barbosa",
+        "matricula": "E107800"
+    },
+    {
+        "nome": "Renan Doval Fernandes",
+        "matricula": "E107935"
+    },
+    {
+        "nome": "Ricardo Yukio Miwa",
+        "matricula": "E107092"
+    },
+    {
+        "nome": "Roberio Nunes Ramos",
+        "matricula": "E107035"
+    },
+    {
+        "nome": "Robson De Oliveira Arcoleze",
+        "matricula": "T809387"
+    },
+    {
+        "nome": "Rodrigo Atanes Batistelo",
+        "matricula": "E106937"
+    },
+    {
+        "nome": "Rodrigo Lazaro Da Silva Pereira",
+        "matricula": "T807449"
+    },
+    {
+        "nome": "ROSANA COSTA DA CRUZ",
+        "matricula": "E100373"
+    },
+    {
+        "nome": "Rosana Cristina dos Reis Olive",
+        "matricula": "E105863"
+    },
+    {
+        "nome": "Roseli Dantas Coutinho ",
+        "matricula": "E106435"
+    },
+    {
+        "nome": "ROSEMEIRE HENRIQUE DE FARIA",
+        "matricula": "E105346"
+    },
+    {
+        "nome": "Rosimeire Bozian",
+        "matricula": "E109294"
+    },
+    {
+        "nome": "SANDRA MARA DOS SANTOS CIPRIANI",
+        "matricula": "E105500"
+    },
+    {
+        "nome": "Saylly Alves Silva",
+        "matricula": "E109906"
+    },
+    {
+        "nome": "SELMA MARIA PINHEIRO ARANHA",
+        "matricula": "E104277"
+    },
+    {
+        "nome": "Sérgio Massaru Niigaki",
+        "matricula": "E109857"
+    },
+    {
+        "nome": "Shirley Ricosti Alves",
+        "matricula": "E104383"
+    },
+    {
+        "nome": "SISSI GARCIA DIAS",
+        "matricula": "E105028"
+    },
+    {
+        "nome": "Stephanie Bastos Nascimento",
+        "matricula": "E109859"
+    },
+    {
+        "nome": "Stephany Lopez",
+        "matricula": "E105627"
+    },
+    {
+        "nome": "Tatiana Gimenes Navarro",
+        "matricula": "E106090"
+    },
+    {
+        "nome": "Tatiane Do Prado Santana",
+        "matricula": "E107338"
+    },
+    {
+        "nome": "Tatiane Franca Morales",
+        "matricula": "E106742"
+    },
+    {
+        "nome": "Thaina dos Santos da Silva",
+        "matricula": "E107582"
+    },
+    {
+        "nome": "Thais Maclerio Forte",
+        "matricula": "E104117"
+    },
+    {
+        "nome": "Thayná Lopes de Lima Gomes",
+        "matricula": "E110196"
+    },
+    {
+        "nome": "Tiago Correia Da Silva",
+        "matricula": "T807460"
+    },
+    {
+        "nome": "Valeria Gama Matos Perez",
+        "matricula": "E107536"
+    },
+    {
+        "nome": "VANESSA APARECIDA SIMON RIZK",
+        "matricula": "E105597"
+    },
+    {
+        "nome": "VANESSA DE ARAUJO GRAMACHO DA SILVA",
+        "matricula": "E105074"
+    },
+    {
+        "nome": "Veronica Alves Paixao",
+        "matricula": "E110529"
+    },
+    {
+        "nome": "Vinicíus Henrique Soares",
+        "matricula": "E110384"
+    },
+    {
+        "nome": "Vinicius Mendes Gasparin",
+        "matricula": "E107304"
+    },
+    {
+        "nome": "VIVIAN DE ARAUJO OLIVEIRA",
+        "matricula": "E105953"
+    },
+    {
+        "nome": "VIVIANE PEREIRA DE SOUSA",
+        "matricula": "E105694"
+    },
+    {
+        "nome": "WELITON SANTANA DE MENEZES",
+        "matricula": "E103045"
+    },
+    {
+        "nome": "Wesley Monteiro Freitas De Souza",
+        "matricula": "T809567"
+    },
+    {
+        "nome": "Wilker Alves Santos",
+        "matricula": "E107579"
+    }
 ]
-}
-  

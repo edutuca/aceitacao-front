@@ -780,7 +780,7 @@ export class DashboardProdutividadeGestorComponent {
     }    
 
     private initComboGruipoDistribuicao() {
-        this.emissorService.getEmissores().subscribe(data=>{
+        this.emissorService.getGrupoEmissores().subscribe(data=>{
              data.forEach(data=>{
                 this.grupoDistribuicao.push({
                     descricao: data.familia + ' - Grupo ' + data.idGrupo
@@ -791,7 +791,7 @@ export class DashboardProdutividadeGestorComponent {
 
     private initComboEmissores() {
 
-        this.emissorService.getEmissores().subscribe(data=>{
+        this.emissorService.getGrupoEmissores().subscribe(data=>{
             
         let descricaoGrupo:string = '';
         let grupo:SelectItemGroup = {

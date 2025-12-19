@@ -52,7 +52,9 @@ export class DashboardProdutividadeEmissorComponent implements OnInit{
     @ViewChild('chartManualAutomaticoPorRestricao') chartManualAutomaticoPorRestricao!: UIChart;
     @ViewChild('chartRecusadaLiberadaNoAno') chartRecusadaLiberadaNoAno!: UIChart;
     
-    
+    grupoDistribuicao:any[] = [];
+    grupoDistribuicaoSelecionado:any;
+
     constructor(
         private emissorService:EmissorService, 
         private familiaService:FamiliaService, 
@@ -60,6 +62,8 @@ export class DashboardProdutividadeEmissorComponent implements OnInit{
     }
 
     ngOnInit() {
+        this.initComboGruipoDistribuicao();
+        
         this.familiaService.getFamilias().subscribe(data=>{
           this.familias = data;
           this.familiaDescricao = [];
@@ -70,9 +74,6 @@ export class DashboardProdutividadeEmissorComponent implements OnInit{
           this.initChartMediaAtendimentoIndividual();
           this.initChartStacked();
           this.initChartManualAutoPorProduto();
-          this.initChartProdutividadeComparacaoAno();
-          this.initChartManualAutoPorRestricao();
-          this.initChartQuantidadeDeRecusaPorMotivo();
         });
         
      
@@ -326,370 +327,6 @@ export class DashboardProdutividadeEmissorComponent implements OnInit{
         };
     }     
 
-   initChartManualAutoPorRestricao() {
-        const documentStyle = getComputedStyle(document.documentElement);
-        const textColor = documentStyle.getPropertyValue('--text-color');
-        const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
-        const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
-
-        this.chartDataManualAutoPorRestricao = {
-            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-            datasets: [
-                {
-                    type: 'bar',
-                    label: 'PAN / AUTO',
-                    backgroundColor: '#e2e29cff',
-                    restricao: 'PAN',
-                    data: [80,10,20,60,40,90,50,20,10,4,1,100]
-                },
-                {
-                    type: 'bar',
-                    label: 'PAN / AUTO',
-                    restricao: 'PAN',
-                    backgroundColor: '#348631ff ',
-                    data: [20,90,80,40,60,10,50,80,90,96,99,0]
-                },
-                {
-                    type: 'bar',
-                    label: 'VIS / AUTO',
-                    restricao: 'VIS',
-                    backgroundColor: '#e2e29cff',
-                    data: [80,10,20,60,40,90,50,20,10,4,1,100]
-                },
-                {
-                    type: 'bar',
-                    label: 'VIS / AUTO',
-                    restricao: 'VIS',
-                    backgroundColor: '#348631ff ',
-                    data: [20,90,80,40,60,10,50,80,90,96,99,0]
-                },
-                {
-                    type: 'bar',
-                    label: 'AJU / AUTO',
-                    restricao: 'AJU',
-                    backgroundColor: '#e2e29cff',
-                    data: [80,10,20,60,40,90,50,20,10,4,1,100]
-                },
-                {
-                    type: 'bar',
-                    label: 'AJU / AUTO',
-                    restricao: 'AJU',
-                    backgroundColor: '#348631ff ',
-                    data: [20,90,80,40,60,10,50,80,90,96,99,0]
-                },
-                {
-                    type: 'bar',
-                    label: 'BON / AUTO',
-                    restricao: 'BON',
-                    backgroundColor: '#e2e29cff',
-                    data: [20,90,80,40,60,10,50,80,90,96,99,0]
-                },
-                {
-                    type: 'bar',
-                    label: 'BON / AUTO',
-                    restricao: 'BON',
-                    backgroundColor: '#348631ff ',
-                    data: [80,10,20,60,40,90,50,20,10,4,1,100]
-                },
-                {
-                    type: 'bar',
-                    label: 'CRI / AUTO',
-                    restricao: 'CRI',
-                    backgroundColor: '#e2e29cff',
-                    data: [20,90,80,40,60,10,50,80,90,96,99,0]
-                },
-                {
-                    type: 'bar',
-                    label: 'CRI / AUTO',
-                    restricao: 'CRI',
-                    backgroundColor: '#348631ff ',
-                    data: [80,10,20,60,40,90,50,20,10,4,1,100]
-                },
-                {
-                    type: 'bar',
-                    label: 'REE / AUTO',
-                    restricao: 'REE',
-                    backgroundColor: '#e2e29cff',
-                    data: [20,90,80,40,60,10,50,80,90,96,99,0]
-                },
-                {
-                    type: 'bar',
-                    label: 'REE / AUTO',
-                    restricao: 'REE',
-                    backgroundColor: '#348631ff ',
-                    data: [80,10,20,60,40,90,50,20,10,4,1,100]
-                },
-                {
-                    type: 'bar',
-                    label: 'DIV / AUTO',
-                    restricao: 'DIV',
-                    backgroundColor: '#e2e29cff',
-                    data: [20,90,80,40,60,10,50,80,90,96,99,0]
-                },
-                {
-                    type: 'bar',
-                    label: 'DIV / AUTO',
-                    restricao: 'DIV',
-                    backgroundColor: '#348631ff ',
-                    data: [80,10,20,60,40,90,50,20,10,4,1,100]
-                },
-                {
-                    type: 'bar',
-                    label: 'IMP / AUTO',
-                    restricao: 'IMP',
-                    backgroundColor: '#e2e29cff',
-                    data: [20,90,80,40,60,10,50,80,90,96,99,0]
-                },
-                {
-                    type: 'bar',
-                    label: 'IMP / AUTO',
-                    restricao: 'IMP',
-                    backgroundColor: '#348631ff',
-                    data: [80,10,20,60,40,90,50,20,10,4,1,100]
-                }
-            ],
-            secudaryDataSet:[{
-                backgroundColor: '#fafcfdff',
-                label: 'PAN'
-            },
-            {
-                backgroundColor: '#fafcfdff',
-                label: 'VIS'
-            },
-            {
-                backgroundColor: '#fafcfdff',
-                label: 'AJU'
-            },
-            {
-                backgroundColor: '#fafcfdff',
-                label: 'BON'
-            },
-            {
-                backgroundColor: '#fafcfdff',
-                label: 'CRI'
-            },
-            {
-                backgroundColor: '#fafcfdff',
-                label: 'REE'
-            },
-            {
-                backgroundColor: '#fafcfdff',
-                label: 'DIV'
-            },
-            {
-                backgroundColor: '#fafcfdff',
-                label: 'IMP'
-            }
-            ],
-            legendDataSet:[{
-                backgroundColor: '#e2e29cff',
-                label: 'Manual'
-            },
-            {
-                backgroundColor: '#348631ff',
-                label: 'Automático'
-            }
-            ]
-        };
-
-        this.chartOptionsManualAutoPorRestricao = {
-            maintainAspectRatio: false,
-            aspectRatio: 0.6,
-            plugins: {
-                legend: {
-                    display: false,
-                    labels: {
-                        color: textColor
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    ticks: {
-                        color: textColorSecondary,
-                        font: {
-                            weight: 500
-                        }
-                    },
-                    grid: {
-                        color: surfaceBorder,
-                        drawBorder: false
-                    }
-                },
-                y: {
-                    ticks: {
-                        color: textColorSecondary
-                    },
-                    grid: {
-                        color: surfaceBorder,
-                        drawBorder: false
-                    }
-                }
-            }
-        };        
-    }     
-
-    initChartProdutividadeComparacaoAno() {
-        const documentStyle = getComputedStyle(document.documentElement);
-        const textColor = documentStyle.getPropertyValue('--text-color');
-        const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
-        const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
-        
-        this.chartDataProdutividade = {
-            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-            datasets: [
-                {
-                    type: 'bar',
-                    label: 'AUTO Recusados / 2024',
-                    backgroundColor: '#c94c4c',
-                    tipo: 'Recusado',
-                    data: [2200,1020,3890,2303,4500,6087,1000,2000,8092,1090,1200,3000]
-                },
-                {
-                    type: 'bar',
-                    label: 'AUTO Liberados / 2024',
-                    backgroundColor: '#87CEFA',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                },
-                {
-                    type: 'bar',
-                    label: 'AUTO Recusados / 2025',
-                    backgroundColor: '#c94c4c',
-                    tipo: 'Recusado',
-                    data: [2200,1020,3890,2303,4500,6087,1000,2000,8092,1090,1200,3000]
-                },
-                {
-                    type: 'bar',
-                    label: 'AUTO Liberados / 2025',
-                    backgroundColor: '#87CEFA',
-                    tipo: 'Liberado',
-                    data: [5980,6880,3999,9000,1022,2999,3900,34560,8000,1999,4320,4900]
-                }                
-            ],
-            secudaryDataSet:[{
-                backgroundColor: '#c94c4c',
-                label: 'Recusado'
-            },
-            {
-                backgroundColor: '#87CEFA',
-                label: 'Liberado'
-            }
-            ]
-        };
-        
-        this.chartOptionsProdutividade = {
-            maintainAspectRatio: false,
-            aspectRatio: 0.6,
-            plugins: {
-                legend: {
-                    display: false,
-                    labels: {
-                        color: textColor
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    ticks: {
-                        color: textColorSecondary
-                    },
-                    grid: {
-                        color: surfaceBorder
-                    }
-                },
-                y: {
-                    ticks: {
-                        color: textColorSecondary
-                    },
-                    grid: {
-                        color: surfaceBorder
-                    }
-                }
-            }
-        };
-    }
-
-    initChartQuantidadeDeRecusaPorMotivo() {
-        const documentStyle = getComputedStyle(document.documentElement);
-        const textColor = documentStyle.getPropertyValue('--text-color');
-        const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
-        const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
-        
-        this.chartDataQtdRecusaPorMotivo = {
-            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-            datasets: [
-                {
-                    type: 'bar',
-                    label: 'ASSINATURA DIGITAL NÃO CONCLUÍDA',
-                    backgroundColor: '#0d0d0eff',
-                    tipo: 'Liberado',
-                    data: [550,600,200,250,805,988,547,2000,2444,1300,855]
-                },
-                {
-                    type: 'bar',
-                    label: 'VISTORIA PRÉVIA NÃO REALIZADA',
-                    backgroundColor: '#0e3650ff',
-                    tipo: 'Liberado',
-                    data: [980,880,2000,400,255,666,500,456,800,19,432,400]
-                },
-                {
-                    type: 'bar',
-                    label: 'PROPOSTA RECUSADA A PEDIDO DO CORRETOR/SEGURADO',
-                    backgroundColor: '#a7991cff',
-                    tipo: 'Liberado',
-                    data: [598,688,39,90,122,299,390,345,80,199,430,400]
-                },   
-                {
-                    type: 'bar',
-                    label: 'ASSINATURA DIGITAL NÃO CONCLUÍDA',
-                    backgroundColor: '#0d0d0eff',
-                    tipo: 'Liberado',
-                    data: [580,680,399,900,102,29,30,560,800,199,420,400]
-                },
-                {
-                    type: 'bar',
-                    label: 'DADOS DO CARTÃO DE CRÉDITO NÃO ENVIADO PELO SEGURADO',
-                    backgroundColor: '#0bb5e9ff',
-                    tipo: 'Liberado',
-                    data: [598,680,399,900,122,999,300,35,80,19,20,40]
-                }
-            ]
-        };
-        
-        this.chartOptionsQtdRecusaPorMotivo = {            
-            maintainAspectRatio: false,
-            aspectRatio: 0.6,
-            plugins: {
-                legend: {
-                    display: false,
-                    labels: {
-                        color: textColor
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    ticks: {
-                        color: textColorSecondary
-                    },
-                    grid: {
-                        color: surfaceBorder
-                    }
-                },
-                y: {
-                    ticks: {
-                        color: textColorSecondary
-                    },
-                    grid: {
-                        color: surfaceBorder
-                    }
-                }
-            }
-        };
-    }    
-
-
    toggleDatasetVisibilityIndividual(index: number, inicioDescricaoId:string) {
         this.toggleDatasetVisibility(this.chartMediaAtendimentoIndividual, index, inicioDescricaoId,'tipo');
    }
@@ -733,4 +370,14 @@ export class DashboardProdutividadeEmissorComponent implements OnInit{
         chart.chart.data.datasets[index];
         chart.chart.update();
    }
+
+    private initComboGruipoDistribuicao() {
+        this.emissorService.getGrupoEmissores().subscribe(data=>{
+             data.forEach(data=>{
+                this.grupoDistribuicao.push({
+                    descricao: data.familia + ' - Grupo ' + data.idGrupo
+                });
+            });
+        });
+    }
 }

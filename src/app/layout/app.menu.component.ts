@@ -2,6 +2,8 @@ import { transition } from '@angular/animations';
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { LayoutService } from './service/app.layout.service';
+import { Router } from '@angular/router';
+import { AssessoriaService } from '../aceitacao-front/service/assessoria.service';
 
 @Component({
     selector: 'app-menu',
@@ -19,7 +21,16 @@ export class AppMenuComponent implements OnInit {
 
     codigoCorretor!: number;
 
-    constructor(public layoutService: LayoutService) { }
+    cpfCnpjSegurado!:number;
+
+    assessorias:any[] = [];
+    assessoriaSelecionada!:any;
+
+    constructor(
+        private assessoriaService:AssessoriaService,
+        private layoutService: LayoutService,
+        private router:Router
+    ) { }
 
     ngOnInit() {
         this.model = [
@@ -40,12 +51,22 @@ export class AppMenuComponent implements OnInit {
 
          ];
 
+         this.assessoriaService.getAssessorias().subscribe(assessorias=>{
+            this.assessorias = assessorias;
+          }
+         );
+
          this.loadComboFiltroAvancado();
          this.loadComboSituacaoProposta();
     }
 
+    pesquisaProposta() {
+        this.router.navigateByUrl('/pesquisa-propostas');
+    }
+
     private loadComboFiltroAvancado() {
         this.tipoBusca = [
+            {descricao:"Selecione Tipo de Busca"},
             {descricao:"Sucursal"},
             {descricao:"Corretor"},
             {descricao:"Assessoria"},

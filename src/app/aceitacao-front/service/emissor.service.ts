@@ -10,12 +10,19 @@ export class EmissorService {
 
     constructor(private http: HttpClient){ }
     
-    getEmissores():Observable<Emissor[]>  {
-        return this.http.get<Emissor[]>('assets/demo/data/emissores.json').pipe(
+    getGrupoEmissores():Observable<Emissor[]>  {
+        return this.http.get<Emissor[]>('assets/demo/data/grupos-emissores.json').pipe(
              map((response:any) => {               
                 return response.data;
              })
         ); 
     }   
 
+    getEmissores():Observable<Emissor[]>  {
+        return this.http.get<Emissor[]>('assets/demo/data/emissores.json').pipe(
+             map((response:any) => {               
+                return response.data;
+             })
+        ); 
+    } 
 }
