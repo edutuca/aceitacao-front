@@ -272,7 +272,7 @@ export class DashboardProdutividadeGestorComponent {
             plugins: {
                 annotation: {
                     annotations: {
-                    linhaReferencia: {
+                    linhaLiberado: {
                         type: 'line',
                         scaleID: 'y',
                         value: 5,
@@ -282,14 +282,54 @@ export class DashboardProdutividadeGestorComponent {
                             display: true,
                             content: 'Média: 5', 
                             position: 'end',
-                            backgroundColor: documentStyle.getPropertyValue('--blue-500'),
+                            backgroundColor: '#87CEFA',
                             color: '#FFFFFF',
                             font: {
                             size: 12,
                             weight: 'bold'
                             }
                         }                     
-                    }
+                    },
+                    linhaRecusado: {
+                    display: false,
+                    type: 'line',
+                    scaleID: 'y',
+                    value: 2,
+                    borderColor: documentStyle.getPropertyValue('--red-500'),
+                    borderWidth: 2,
+                    borderDash: [6, 6],
+                    label: {
+                        display: true,
+                        content: 'Média: 2',
+                        backgroundColor: '#c94c4c',
+                        position: 'end',
+                            color: '#FFFFFF',
+                            font: {
+                            size: 12,
+                            weight: 'bold'
+                        }
+                     }
+                   },
+                   linhaTotal: {
+                    display: true,
+                    type: 'line',
+                    scaleID: 'y',
+                    value: 8,
+                    borderColor: '#008080',
+                    borderWidth: 2,
+                    borderDash: [6, 6],
+                    label: {
+                        display: true,
+                        content: 'Média Total: 8',
+                        backgroundColor: '#008080',
+                        position: 'end',
+                            color: '#FFFFFF',
+                            font: {
+                            size: 12,
+                            weight: 'bold'
+                        }
+                     }
+                   }                   
                 }
             },
              legend: {
@@ -810,10 +850,19 @@ export class DashboardProdutividadeGestorComponent {
             let legendPrincipal = chart.data.datasets[i];
 
             if(secudaryLegend.label == legendPrincipal[descricaoAtributoComparacao]) {
-                metaData.hidden = metaData.hidden === null ? !legendPrincipal.hidden : null;
+                metaData.hidden = metaData.hidden === null ? !legendPrincipal.hidden : null;                
             }
         }
         
+        if(secudaryLegend.label == 'Recusado') {
+            chart.chart.options.plugins.annotation.annotations.linhaRecusado.display=(chart.chart.options.plugins.annotation.annotations.linhaRecusado.display)?!chart.chart.options.plugins.annotation.annotations.linhaRecusado.display:true; 
+        }
+
+        if(secudaryLegend.label == 'Liberado') {
+            chart.chart.options.plugins.annotation.annotations.linhaLiberado.display=(chart.chart.options.plugins.annotation.annotations.linhaLiberado.display)?!chart.chart.options.plugins.annotation.annotations.linhaLiberado.display:true; 
+        }
+
+
         let el:any = document.getElementById(inicioDescricaoId+index);
         
         if(el.style.textDecoration) {
